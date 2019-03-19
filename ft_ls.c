@@ -9,9 +9,8 @@ int main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		dir_name = ft_memalloc(2);
-		*dir_name = '.';
-		conclusion_without_flags(dir_name);
+		conclusion_without_flags(".");
+		exit(1);
 	}
 	// else
 	// {

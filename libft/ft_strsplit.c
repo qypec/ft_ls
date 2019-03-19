@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/08 15:18:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/03/19 16:52:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char				**ft_strsplit(char const *str, char c)
 			next = ft_str_find_next(str, c, 0);
 			ret[i] = ft_strsub(str, 0, next - str);
 			if (ret[i] == NULL)
-				return (ft_matrixfree(&ret, i));
+				return (ft_matrixfree(&ret));
 			i++;
 			str = next;
 		}

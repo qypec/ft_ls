@@ -10,6 +10,6 @@
 void	conclusion_without_flags(char *dir_name);
 void	conclusion(char *dir_name);
 int		number_of_files(char *dir_name);
-void	sort_by_ascii(char *dir_name);
+char	**sort_by_ascii(char *dir_name);
 
 #endif
