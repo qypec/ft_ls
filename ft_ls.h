@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 16:33:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 19:03:08 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,13 @@ int		number_of_files(char *dir_name);
 char	**sort_by_ascii(char *dir_name);
 void	print(void);
 
+typedef	struct			t_flags
+{
+	int					l; // shows lots of shit 
+	int					R; // recursive shit
+	int					a; // show ".file" files
+	int					t; // sort by timestamp
+	int					r; // sort in reverse order
+}
 
 #endif
