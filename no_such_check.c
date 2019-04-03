@@ -6,11 +6,44 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:17:24 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 16:04:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 17:03:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+char			*find_path(const char *name)
+{
+	int cut_counter;
+	int	i;
+
+	i = 0;
+	cut_counter = ft_strlen(name) - 1;
+	if (name[i] == '/')
+	{
+		while (name[i] == '/')
+			i++:
+		if (name[i] ==)
+	}
+
+
+	while (cut_counter > 0)
+	{
+		if (name[cut_counter] == '/')
+		{
+			while (name[cut_counter] == '/')
+				cut_counter--;
+		}
+		cut_counter--;
+	}
+	// printf("%d\n", cut_counter);
+}
+
+static void		check_other_dir(const char *name)
+{
+	DIR				*dir;
+	struct dirent	*entry;
+}
 
 static void		check_this_dir(const char *name)
 {
