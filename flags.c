@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wconnell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:33:38 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/03 21:42:27 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/03 22:33:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			is_it_flag(char *s)
 	else
 		return(0);
 }
+
 int			valid_flag(char *s, char *v)
 {
 	int i;
@@ -44,6 +45,7 @@ int			valid_flag(char *s, char *v)
 	}
 	return (1);
 }
+
 int			putflag(char *av, t_flags *flags)
 {
 	int i;
@@ -67,6 +69,7 @@ int			putflag(char *av, t_flags *flags)
 	}
 	return (1);
 }
+
 int			find_flags(char **av, int ac, t_flags *flags)
 {
 	int		i;
@@ -82,25 +85,9 @@ int			find_flags(char **av, int ac, t_flags *flags)
 		else
 			f++;
 		if (is_it_flag(av[i]) && f)
-			bust(av[i]);
+			bust((const char *)av[i]);
 		m == 2 ? f++ : 0;
 		i++;
 	}
 	return (1);
-}
-int main(int argc, char **argv)
-{
-	t_flags		flags;
-
-	flags = (t_flags){0, 0, 0, 0, 0};
-
-	if(argc > 1)
-	{
-		find_flags(argv, argc, &flags);
-	}
-	printf("l = %d\n", flags.l);
-	printf("R = %d\n", flags.R);
-	printf("a = %d\n", flags.a);
-	printf("t = %d\n", flags.t);
-	printf("r = %d\n", flags.r);
 }
