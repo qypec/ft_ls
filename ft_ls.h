@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/26 16:16:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 15:19:04 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/03 15:24:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#ifndef FT_LS_H
+# define FT_LS_H
 
-void	print(void)
-{
-	DIR *dir;
-    struct dirent *entry;
-    struct stat buff;
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
+#include <stdlib.h>
+#include "libft/libft.h"
 
-    dir = opendir(".");
-    while ((entry = readdir(dir)) != NULL) 
-    {
-    	stat(entry->d_name, &buff);
-    	printf("%s\n", entry->d_name);
-    	printf("%d\n\n", buff.st_mode);
-    }
-}
+void	no_such_check(char **names);
+
+void	conclusion_without_flags(char *dir_name);
+void	conclusion(char *dir_name);
+int		number_of_files(char *dir_name);
+char	**sort_by_ascii(char *dir_name);
+void	print(void);
+
+
+#endif

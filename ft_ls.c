@@ -1,10 +1,20 @@
-#include "header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/03 15:28:11 by yquaro           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_ls.h"
 
 int main(int argc, char **argv)
 {
-	DIR *dir;
-	char *dir_name;
-	struct dirent *entry;
+	char	*flags;
 
 
 	if (argc == 1)
@@ -12,9 +22,15 @@ int main(int argc, char **argv)
 		conclusion_without_flags(".");
 		exit(1);
 	}
-	// else
-	// {
+	else
+	{
+		if (argv[1][0] == '-')
+			flags = ft_strdup(argv[1]);
+		no_such_check(argv);
+	}
 
-	// }
-	// conclusion(dir_name);
+	// представим, что у нас пока только -R
+	// argc = 2
+	// argv[1] = "-R"
+	// print();
 }

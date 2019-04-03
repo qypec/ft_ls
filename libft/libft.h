@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/03/19 16:52:27 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 15:27:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int					ft_isspace(int c);
 int					ft_numblen(int n);
 char				**ft_matrixfree(char ***ret);
 char				**ft_strswap(char **matrix, int first, int second);
+void				ft_putmatrix(char **str);
 
 #endif

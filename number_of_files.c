@@ -1,4 +1,4 @@
-#include "header.h"
+#include "ft_ls.h"
 
 int		number_of_files(char *dir_name)
 {
