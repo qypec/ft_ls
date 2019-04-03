@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 16:35:57 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:54:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	// 	no_such_check(argv);
 	// }
 
-	find_path("abs/libft/////");
+	bust("hui");
 	// представим, что у нас пока только -R
 	// argc = 2
 	// argv[1] = "-R"

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 16:33:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:55:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 # define FT_LS_H
 
 #include <stdio.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <dirent.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+
+typedef struct		s_type
+{
+	char	*name;
+	int		type;
+}					t_type;
+
+void	bust(char *file_name);
 
 void	no_such_check(char **names);
 char	*find_path(const char *name);

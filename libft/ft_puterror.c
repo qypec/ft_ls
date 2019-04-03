@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_puterror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 21:42:47 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 18:58:37 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/03 18:57:09 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/03 19:00:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <unistd.h>
 
-void	ft_putstr(char const *s)
+void	ft_puterror(const char *s)
 {
 	int i;
 
@@ -21,7 +22,7 @@ void	ft_putstr(char const *s)
 		return ;
 	while (s[i] != '\0')
 	{
-		write(1, &s[i], 1);
+		write(2, &s[i], 1);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 15:27:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 18:59:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
+void				ft_puterror(const char *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar_fd(char c, int fd);
