@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 19:40:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 21:44:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-# define FILE	1
-# define DIR	2
+# define T_FILE	1
+# define T_DIR	2
 
 typedef struct		s_file
 {
@@ -31,16 +31,23 @@ typedef struct		s_file
 	struct s_file	*next;
 }					t_file;
 
-void	bust(char *file_name);
+void		bust(const char *file_name);
 
-void	no_such_check(char **names);
-char	*find_path(const char *name);
+void		no_such_check(char **names);
+char		*find_path(const char *name);
 
-void	conclusion_without_flags(char *dir_name);
-void	conclusion(char *dir_name);
-int		number_of_files(char *dir_name);
-char	**sort_by_ascii(char *dir_name);
-void	print(void);
+void		conclusion_without_flags(char *dir_name);
+void		conclusion(char *dir_name);
+int			number_of_files(char *dir_name);
+char		**sort_by_ascii(char *dir_name);
+void		print(void);
 
+void		filedelone(t_file **file);
+t_file		*newlst(t_file	*new, const char *str);
+
+t_file		*struct_filenames(t_file **head, const char **argv);
+void		push_back(t_file **head, t_file *new);
+
+int			whatstype(const char *str);
 
 #endif
