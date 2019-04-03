@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:50:11 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 20:23:03 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/03 22:08:14 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	bust(char *file_name)
+void	bust(const char *file_name)
 {
 	ft_puterror("ft_ls: ");
 	ft_puterror(file_name);

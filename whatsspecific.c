@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   whatsspecific.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 21:24:15 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/03 21:34:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int main(int argc, char **argv)
+int		whatstype(const char *str)
 {
-	t_file	*head;
-	char	*flags;
+	struct stat buff;
 
-	head = NULL;
-	head = struct_filenames(&head, (const char **)argv);
-
-	while (head != NULL)
+	if (stat(str, &buff) < 0) // потом надо изменить lstat
 	{
-		printf("name: %s\n", head->name);
-		printf("type: %d\n\n", head->type);
-		head = head->next;
+		bust(str);
+		return (0);
 	}
+		// perror("stat error");
+	if (S_ISREG(buff.st_mode)) 
+		return (T_FILE);
+    else if (S_ISDIR(buff.st_mode)) 
+    	return (T_DIR);
+    return (0);
 }
