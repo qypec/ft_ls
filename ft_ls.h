@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 18:55:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 19:40:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-typedef struct		s_type
+# define FILE	1
+# define DIR	2
+
+typedef struct		s_file
 {
-	char	*name;
-	int		type;
-}					t_type;
+	char			*name;
+	int				type;
+	struct s_file	*next;
+}					t_file;
 
 void	bust(char *file_name);
 

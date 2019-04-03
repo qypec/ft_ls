@@ -91,5 +91,6 @@ int					ft_numblen(int n);
 char				**ft_matrixfree(char ***ret);
 char				**ft_strswap(char **matrix, int first, int second);
 void				ft_putmatrix(char **str);
+void				push_back(t_fig **head, t_fig *new);
 
 #endif
