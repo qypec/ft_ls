@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   bust.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 21:42:47 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 18:58:37 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/03 18:50:11 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/03 19:00:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_ls.h"
 
-void	ft_putstr(char const *s)
+void	bust(char *file_name)
 {
-	int i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	ft_puterror("ft_ls: ");
+	ft_puterror(file_name);
+	ft_puterror(": No such file or directory");
+	write(1, "\n", 1);
 }
