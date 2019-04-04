@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 21:24:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/03 22:37:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,28 @@
 
 int main(int argc, char **argv)
 {
-	t_file	*head;
-	char	*flags;
+	t_file		*head;
+	t_flags		flags;
+
+	flags = (t_flags){0, 0, 0, 0, 0};
+	if (argc > 1)
+	{
+		find_flags(argv, argc, &flags);
+	}
 
 	head = NULL;
 	head = struct_filenames(&head, (const char **)argv);
-
-	while (head != NULL)
-	{
-		printf("name: %s\n", head->name);
-		printf("type: %d\n\n", head->type);
-		head = head->next;
-	}
 }
+
+	// while (head != NULL)
+	// {
+	// 	printf("name: %s\n", head->name);
+	// 	printf("type: %d\n\n", head->type);
+	// 	head = head->next;
+	// }
+
+	// printf("l = %d\n", flags.l);
+	// printf("R = %d\n", flags.R);
+	// printf("a = %d\n", flags.a);
+	// printf("t = %d\n", flags.t);
+	// printf("r = %d\n", flags.r);
