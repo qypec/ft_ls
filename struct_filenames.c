@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/04 20:38:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/04 21:52:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,17 @@ void		filedelone(t_file **file)
 	*file = NULL;
 }
 
-char		*get_path(char *name, char *path)
-{
-	char	*tmp1;
-	char	*tmp2;
-
-	tmp1 = ft_strjoin(path, name);
-	tmp2 = ft_strjoin(name, "/");
-	ft_strdel(&tmp1);
-
-
-}
-
 t_file		*newlst(t_file	*new, const char *name, char *path)
 {
-	int type;
+	int		type;
+	char	*full_name;
 
+	full_name = ft_strsplit(path, name); // чтобы использовать stat в функции whatstype
 	if (!(new = malloc(sizeof(t_file))))
 		exit(1);
 	new->name = ft_strdup(name);
-	new->path = get_path(name, path);
-	type = whatstype(name);
+	new->path = ft_strdup(path);
+	type = whatstype(full_name);
 	// if (type == 0) // если тип не определен это удаляет узел
 	// {
 	// 	filedelone(&new);
@@ -49,6 +39,7 @@ t_file		*newlst(t_file	*new, const char *name, char *path)
 	// }
 	new->type = type;
 	new->next = NULL;
+	ft_strdel(&full_name);
 	return (new);
 }
 

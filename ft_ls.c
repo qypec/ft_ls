@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/04 20:45:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/04 21:59:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int main(int argc, char **argv)
 	{
 		find_flags(argv, argc, &flags);
 		head = NULL;
-		head = struct_filenames(&head, (const char **)argv, "./");
+
+		head = struct_filenames(&head, (const char **)argv, "./"); // Функция обрабатывает только argv.
+																   // Нужно дописать в нее условие выхода,
+																   // если в аргументах нет названий файлов
+																   // В таком случае нужно заполнять матрицу
+																   // не структурой, а из dirent.h с путем "."
 		init(&head)
 
 	}
