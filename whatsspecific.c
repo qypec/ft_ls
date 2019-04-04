@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 21:34:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/04 19:36:35 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		whatstype(const char *str)
 {
 	struct stat buff;
 
-	if (stat(str, &buff) < 0) // потом надо изменить lstat
+	if (stat(str, &buff) < 0) // потом надо изменить на lstat
 	{
 		bust(str);
 		return (0);

@@ -36,6 +36,7 @@ typedef	struct			s_flags
 typedef struct			s_file
 {
 	char				*name;
+	char				*path;
 	int					type;
 	struct s_file		*next;
 }						t_file;
