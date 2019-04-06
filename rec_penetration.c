@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/04 22:03:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/06 15:47:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,53 @@ char		*get_path(char *name, char *path)
 	return (tmp2);
 }
 
-int		rec_penetration(char **matr, char *path, t_flags *flags) // рекурсия
+int		rec_penetration(char *path, t_flags *flags) // рекурсия
 {
 		t_file		*head;
+		char		**matr;
+		int			i;
 
+		i = 0;
 		head = NULL;
+		matr = get_rootnames(matr, path); // заполняет матрицу именами, которые вытаскиваются по пути
 		head = struct_filenames(&head, matr, path);
-		// очень похоже, что мы в init написали то, что нужно написать сюда 
-		
-
+		matr = matrix_sort(head, &matr, flags);
+		print(head, matr, flags);
+		while (matr[i] != NULL)
+		{
+			tmp = find_list(head, matr[i]); // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
+			if (tmp->type == T_DIR) // если лист - папка 
+			{
+				new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
+				rec_penetration(new_path, flags);
+			}
+			i++;
+		}
 }
 
-int		init(t_file *head, t_flags *flags) // функция, из которой мы вызываем рекурсию
+int		init(t_file *head, char **matr, t_flags *flags) // функция, из которой мы вызываем рекурсию
 {
 	t_file	*tmp;
-	char	**matrix;
 	char	*new_path;
 	int		i;
 
 	i = 0;
 	tmp = head;
-	matrix = matrix_fill(head); // функция заполняет матрицу на основе односвязного списка
-	matrix = matrix_sort(head, &matrix, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
-	while (matrix[i] != NULL)
+	if (matr == NULL) // если передали не argv
 	{
-		tmp = find_list(head, matrix[i]); // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
-		if (tmp->type == 2) // если лист - папка 
+		matr = get_rootnames(matr, "./");
+		matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
+	}
+	print(head, matr, flags);
+	while (matr[i] && is_it_flag(matr[i]))
+		i++;
+	while (matr[i] != NULL)
+	{
+		tmp = find_list(head, matr[i]); // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
+		if (tmp->type == T_DIR) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
-			rec_penetration(matr, tmp->path, flags);
+			rec_penetration(new_path, flags);
 		}
 		i++;
 	}
