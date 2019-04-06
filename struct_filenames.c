@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 14:30:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/06 18:11:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_file		*newlst(t_file	*new, const char *name, char *path)
 	int		type;
 	char	*full_name;
 
-	full_name = ft_strsplit(path, name); // чтобы использовать stat в функции whatstype
+	full_name = ft_strjoin(path, name); // чтобы использовать stat в функции whatstype
 	if (!(new = malloc(sizeof(t_file))))
 		exit(1);
 	new->name = ft_strdup(name);
@@ -49,6 +49,8 @@ t_file		*struct_filenames(t_file **head, const char **matr, char *path) // бе�
 	int		i;
 
 	i = 0;
+	if (ft_strcmp(matr[0], "./ft_ls") == 0)
+		i++;
 	while (matr[i] != NULL)
 	{
 		if (is_it_flag((char *)matr[i]) == 1)
