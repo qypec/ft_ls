@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 18:46:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/06 19:01:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ void		rec_penetration(char *path, t_flags *flags) // рекурсия
 	int			i;
 	char		*new_path;
 
-	printf("path: %s\n\n", path);
+	ft_putchar('\n');
+	ft_putstr(path);
+	ft_putchar(':');
+	ft_putchar('\n');
 	i = 0;
 	head = NULL;
 	tmp = head;
@@ -123,6 +126,7 @@ void		init(t_file *head, char **matr, t_flags *flags) // функция, из к
 	char	*new_path;
 	int		i;
 
+	// ft_putmatrix(matr);
 	i = 0;
 	tmp = head;
 	if (matr == NULL) // если передали не argv
@@ -131,6 +135,7 @@ void		init(t_file *head, char **matr, t_flags *flags) // функция, из к
 		head = struct_filenames(&head, (const char **)matr, "./");
 		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
 	}
+	ft_putmatrix(matr);
 	while (matr[i] && is_it_flag(matr[i])) // если пришел argv, то отмотает флаги, а если matr, то останется i = 0
 		i++;
 	while (matr[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 18:44:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/06 19:00:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		only_flags(char **argv) // определяет только ли флаг�
 	i = 1;
 	while (argv[i] != NULL) // не учитывает тот факт, что файл может называться на '-'
 	{
-		if (argv[i][0] == '-')
+		if (is_it_flag(argv[i]))
 			i++;
 		else
 			return (0);
@@ -40,7 +40,7 @@ int		main(int argc, char **argv)
 	{
 		find_flags(argv, argc, &flags); // заполняет структуру флагов флагами
 		head = NULL;
-		if (only_flags(argv) == 0)
+		if (only_flags(argv) == 1)
 		{
 			matr = NULL;
 			init(head, matr, &flags);
