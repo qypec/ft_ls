@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/03 22:44:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/06 17:55:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct			s_flags
 typedef struct			s_file
 {
 	char				*name;
+	char				*path;
 	int					type;
 	struct s_file		*next;
 }						t_file;
@@ -49,15 +50,18 @@ void					usage(char c);
 void					bust(const char *file_name);
 
 void					filedelone(t_file **file);
-t_file					*newlst(t_file	*new, const char *str);
-t_file					*struct_filenames(t_file **head, const char **argv);
+t_file					*newlst(t_file	*new, const char *str, char *path);
+t_file					*struct_filenames(t_file **head, const char **matr, char *path);
 void					push_back(t_file **head, t_file *new);
 int						whatstype(const char *str);
 
-// void					no_such_check(char **names);
-// char					*find_path(const char *name);
-// void					conclusion_without_flags(char *dir_name);
-// int						number_of_files(char *dir_name);
-// char					**sort_by_ascii(char *dir_name);
+char					**get_rootnames(char ***ret, char *path);
+int						number_of_files(char *dir_name);
+
+void					init(t_file *head, char **matr, t_flags *flags);
+t_file					*find_list(t_file **head, char *name);
+
+void					conclusion_without_flags(char *dir_name);
+void					print(t_file *head, char **matr, t_flags *flags);
 
 #endif
