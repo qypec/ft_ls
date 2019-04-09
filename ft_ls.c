@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 20:48:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:31:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int		main(int argc, char **argv)
 		else /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
 			printf("1\n\n");
-			head = struct_filenames(&head, (const char **)argv, "./");
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
 				init(head, argv, &flags);
 		}

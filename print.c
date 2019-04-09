@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 20:42:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:26:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ void		print_without_dir(t_file *head, const char **matr)
 	tmp = head;
 	while (matr[i] != NULL)
 	{
-		// tmp = find_list(&head, matr[i]);
-		// printf("tmp->name = %s\n", tmp->name);
 		if ((tmp = find_list(&head, matr[i])) == NULL) /* функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список */
 		{
 			i++;
 			// очистить tmp;
+			continue ;
 		}
 		if (tmp->type != T_DIR) // если лист - папка 
 		{

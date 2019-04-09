@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 20:53:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:39:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ void					bust(const char *file_name);
 
 void					filedelone(t_file **file);
 t_file					*newlst(t_file	*new, const char *name, const char *path);
-t_file					*struct_filenames(t_file **head, const char **matr, const char *path);
+t_file					*struct_filenames(t_file **head, const char **matr, const char *path, t_flags *flags);
 void					push_back(t_file **head, t_file *new);
 int						whatsspecific(const char *str, t_file **new);
 
-char					**get_rootnames(char ***ret, const char *path);
-int						number_of_files(const char *dir_name);
+int						can_i_add_hidden_file(const char *str, t_flags *flags);
+
+char					**get_rootnames(char ***ret, const char *path, t_flags *flags);
+int						number_of_files(const char *dir_name, t_flags *flags);
 
 void					init(t_file *head, char **matr, t_flags *flags);
 t_file					*find_list(t_file **head, const char *name);
