@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 23:49:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 23:54:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,10 +141,11 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	int			i;
 	char		*new_path;
 
-	ft_putchar('\n');
-	ft_putstr(path);
-	ft_putchar(':');
-	ft_putchar('\n');
+	print_path(path);
+	// ft_putchar('\n');
+	// ft_putstr(path);
+	// ft_putchar(':');
+	// ft_putchar('\n');
 	i = 0;
 	head = NULL;
 	tmp = head;

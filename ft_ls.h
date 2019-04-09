@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 23:39:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 00:00:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ t_file					*find_list(t_file **head, const char *name);
 void					conclusion_without_flags(char *dir_name);
 void					print(t_file *head, char **matr, t_flags *flags);
 void					print_without_dir(t_file *head, const char **matr);
+void					print_path(const char *path);
 
 #endif
