@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 19:21:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:53:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,13 @@ t_file		*newlst(t_file	*new, const char *name, const char *path)
 	full_name = ft_strjoin(path, name); // чтобы использовать stat в функции whatstype
 	if (!(new = malloc(sizeof(t_file))))
 		exit(1);
+	if (whatsspecific((const char *)full_name, &new) == 0)
+	{
+		ft_strdel(&full_name);
+		return (NULL);
+	}
 	new->name = ft_strdup(name);
 	new->path = ft_strdup(path);
-	whatsspecific((const char *)full_name, &new);
 	// if (type == 0) // если тип не определен это удаляет узел
 	// {
 	// 	filedelone(&new);

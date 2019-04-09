@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 19:35:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 20:57:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-char		**argv_to_matrix(const char **argv)
+char		**argv_to_matrix(const char **argv, t_file *head)
 {
 	int		i;
 	int		num;
@@ -37,8 +37,11 @@ char		**argv_to_matrix(const char **argv)
 	tmp = 0;
 	while (argv[i] != NULL)
 	{
-		matr[tmp] = ft_strdup(argv[i]);
-		tmp++;
+		if (find_list(&head, argv[i]) != NULL) /* если такой файл существует в struct*/
+		{
+			matr[tmp] = ft_strdup(argv[i]);
+			tmp++;
+		}
 		i++;
 	}
 	matr[tmp] = NULL;
@@ -57,7 +60,7 @@ t_file		*find_list(t_file **head, const char *name)
 		tmp = tmp->next;
 	}
 	if (tmp == NULL)		// пока не понимаю может ли случится такое, что не найдет ни одного совпадения
-		printf("ERROR");
+		return (NULL);
 	return (tmp);
 }
 
@@ -168,14 +171,15 @@ void		init(t_file *head, char **matr, t_flags *flags) // функция, из к
 	{
 		matr = get_rootnames(&matr, "./");
 		head = struct_filenames(&head, (const char **)matr, "./");
-		matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
+		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
 		// ft_putmatrix(matr);
 	}
 	else
 	{
-		matr = argv_to_matrix((const char **)matr);
-		matr = matrix_sort(head, &matr, flags);
-		// print_without_dir(); // функция должна печатать все файлы кроме директорий
+		matr = argv_to_matrix((const char **)matr, head);
+		// matr = matrix_sort(head, &matr, flags);
+		// ft_putmatrix(matr);
+		print_without_dir(head, (const char **)matr); // функция должна печатать все файлы кроме директорий
 	}
 
 	while (matr[i] != NULL)
