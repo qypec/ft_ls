@@ -6,18 +6,51 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 19:01:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/08 22:21:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_file		*find_list(t_file **head, char *name)
+char		**argv_to_matrix(const char **argv)
+{
+	int		i;
+	int		num;
+	int		tmp;
+	char	**matr;
+
+	i = 0;
+	num = 0;
+	if (ft_strcmp(argv[0], "./ft_ls") == 0)
+		i++;
+	while (argv[i][0] == '-') // не учитывает того факта, что файл может начинаться на '-'
+		i++;
+	tmp = i;
+	while (argv[i] != NULL)
+	{
+		num++;
+		i++;
+	}
+	i = tmp;
+	if (!(matr = (char**)malloc(sizeof(char *) * (num + 1))))
+		return (NULL);
+	tmp = 0;
+	while (argv[i] != NULL)
+	{
+		matr[tmp] = ft_strdup(argv[i]);
+		tmp++;
+		i++;
+	}
+	matr[tmp] = NULL;
+	return (matr);
+}
+
+t_file		*find_list(t_file **head, const char *name)
 {
 	t_file	*tmp;
 
 	tmp = *head;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		if (ft_strcmp(tmp->name, name) == 0)
 			break ;
@@ -28,7 +61,7 @@ t_file		*find_list(t_file **head, char *name)
 	return (tmp);
 }
 
-int			number_of_files(char *dir_name)
+int			number_of_files(const char *dir_name)
 {
 	DIR				*dir;
 	struct dirent	*entry;
@@ -47,7 +80,7 @@ int			number_of_files(char *dir_name)
 	return (count);
 }
 
-char		**get_rootnames(char ***ret, char *path)
+char		**get_rootnames(char ***ret, const char *path)
 {
 	DIR				*dir;
 	struct dirent	*entry;
@@ -89,7 +122,7 @@ char		*get_path(char *name, char *path)
 	return (tmp2);
 }
 
-void		rec_penetration(char *path, t_flags *flags) // рекурсия
+void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 {
 	t_file		*head;
 	t_file		*tmp;
@@ -104,7 +137,7 @@ void		rec_penetration(char *path, t_flags *flags) // рекурсия
 	i = 0;
 	head = NULL;
 	tmp = head;
-	matr = get_rootnames(&matr, path); // заполняет матрицу именами, которые вытаскиваются по пути
+	matr = get_rootnames(&matr, path); // заполняет матрицу именами, которые вытаскиваются из пути
 	head = struct_filenames(&head, (const char **)matr, path);
 	// matr = matrix_sort(head, &matr, flags);
 	print(head, matr, flags);
@@ -115,7 +148,9 @@ void		rec_penetration(char *path, t_flags *flags) // рекурсия
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
 			rec_penetration(new_path, flags);
+			ft_strdel(&new_path);
 		}
+		// очистить tmp тут
 		i++;
 	}
 }
@@ -129,23 +164,30 @@ void		init(t_file *head, char **matr, t_flags *flags) // функция, из к
 	// ft_putmatrix(matr);
 	i = 0;
 	tmp = head;
-	if (matr == NULL) // если передали не argv
+	if (matr == NULL) /* matr будет равен NULL только если в init передали не argv */
 	{
 		matr = get_rootnames(&matr, "./");
 		head = struct_filenames(&head, (const char **)matr, "./");
 		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
+		ft_putmatrix(matr);
 	}
-	ft_putmatrix(matr);
-	while (matr[i] && is_it_flag(matr[i])) // если пришел argv, то отмотает флаги, а если matr, то останется i = 0
-		i++;
+	else
+	{
+		matr = argv_to_matrix((const char **)matr);
+		// matr = matrix_sort(head, &matr, flags);
+		// print_without_dir(); // функция должна печатать все файлы кроме директорий
+	}
+
 	while (matr[i] != NULL)
 	{
 		tmp = find_list(&head, matr[i]); // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
 		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
-			rec_penetration(new_path, flags);
+			rec_penetration((const char *)new_path, flags);
+			ft_strdel(&new_path);
 		}
+		// очистить tmp тут
 		i++;
 	}
 }

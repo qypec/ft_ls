@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 18:11:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/08 22:18:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void		filedelone(t_file **file)
 	if (file == NULL)
 		return ;
 	ft_strdel(&((*file)->name));
+	ft_strdel(&((*file)->path));
 	free(*file);
 	*file = NULL;
 }
 
-t_file		*newlst(t_file	*new, const char *name, char *path)
+t_file		*newlst(t_file	*new, const char *name, const char *path)
 {
 	int		type;
 	char	*full_name;
@@ -31,7 +32,7 @@ t_file		*newlst(t_file	*new, const char *name, char *path)
 		exit(1);
 	new->name = ft_strdup(name);
 	new->path = ft_strdup(path);
-	type = whatstype(full_name);
+	type = whatstype((const char *)full_name);
 	// if (type == 0) // если тип не определен это удаляет узел
 	// {
 	// 	filedelone(&new);
@@ -43,22 +44,22 @@ t_file		*newlst(t_file	*new, const char *name, char *path)
 	return (new);
 }
 
-t_file		*struct_filenames(t_file **head, const char **matr, char *path) // без учета, что файл может начинаться на '-'
+t_file		*struct_filenames(t_file **head, const char **matr, const char *path) // без учета, что файл может начинаться на '-'
 {
 	t_file	*new;
 	int		i;
 
 	i = 0;
-	if (ft_strcmp(matr[0], "./ft_ls") == 0)
+	if (ft_strcmp(matr[0], "./ft_ls") == 0) /* чтобы не заносить ./ft_ls в структуру */
 		i++;
 	while (matr[i] != NULL)
 	{
-		if (is_it_flag((char *)matr[i]) == 1)
+		if (is_it_flag((const char *)matr[i]) == 1)
 		{
 			i++;
 			continue ;
 		}
-		if ((new = newlst(new, matr[i], path)) == NULL)
+		if ((new = newlst(new, matr[i], (const char *)path)) == NULL)
 		{
 			i++;
 			continue ;
@@ -66,5 +67,6 @@ t_file		*struct_filenames(t_file **head, const char **matr, char *path) // бе�
 		push_back(&(*head), new);
 		i++;
 	}
+	// filedelone(&new);
 	return (*head);
 }

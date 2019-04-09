@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 19:00:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/08 22:04:35 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		only_flags(char **argv) // определяет только ли флаги в argv
+int		only_flags(const char **argv) // определяет только ли флаги в argv
 {
 	int i;
 
@@ -38,19 +38,24 @@ int		main(int argc, char **argv)
 	// printf("matr[i] = %s\nlist = %s\n\n", argv[1], tmp->name);
 	if (argc > 1)
 	{
-		find_flags(argv, argc, &flags); // заполняет структуру флагов флагами
+		find_flags((const char **)argv, argc, &flags); /* заполняет структуру флагами из argv */
 		head = NULL;
-		if (only_flags(argv) == 1)
+		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
 		{
+			printf("2\n");
 			matr = NULL;
-			init(head, matr, &flags);
+			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
+				init(head, matr, &flags);
 		}
-		else
+		else /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
+			printf("1\n\n");
 			head = struct_filenames(&head, (const char **)argv, "./");
-			init(head, argv, &flags);
+			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
+				init(head, argv, &flags);
 		}
 	}
+	printf("\nexit!");
 	// else
 	// 	conclusion_without_flags(".");
 	// free(flags); // ??

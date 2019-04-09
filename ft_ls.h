@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 17:55:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/08 22:19:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ typedef struct			s_file
 	struct s_file		*next;
 }						t_file;
 
-int						find_flags(char **av, int ac, t_flags *flags);
-int						valid_flag(char *s, char *v);
-int						is_it_flag(char *s);
-int						putflag(char *av, t_flags *flags);
+int						find_flags(const char **av, int ac, t_flags *flags);
+int						valid_flag(const char *s, char *v);
+int						is_it_flag(const char *s);
+int						putflag(const char *av, t_flags *flags);
 void					usage(char c);
 
 void					bust(const char *file_name);
 
 void					filedelone(t_file **file);
-t_file					*newlst(t_file	*new, const char *str, char *path);
-t_file					*struct_filenames(t_file **head, const char **matr, char *path);
+t_file					*newlst(t_file	*new, const char *name, const char *path);
+t_file					*struct_filenames(t_file **head, const char **matr, const char *path);
 void					push_back(t_file **head, t_file *new);
 int						whatstype(const char *str);
 
-char					**get_rootnames(char ***ret, char *path);
-int						number_of_files(char *dir_name);
+char					**get_rootnames(char ***ret, const char *path);
+int						number_of_files(const char *dir_name);
 
 void					init(t_file *head, char **matr, t_flags *flags);
-t_file					*find_list(t_file **head, char *name);
+t_file					*find_list(t_file **head, const char *name);
 
 void					conclusion_without_flags(char *dir_name);
 void					print(t_file *head, char **matr, t_flags *flags);

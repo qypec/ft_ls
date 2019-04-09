@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:33:38 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/06 16:53:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/08 21:28:24 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int			is_it_flag(char *s)
+int			is_it_flag(const char *s)
 {
 	if(s && s[0] == '-' && s[1])
 		return(1);
@@ -20,7 +20,7 @@ int			is_it_flag(char *s)
 		return(0);
 }
 
-int			valid_flag(char *s, char *v)
+int			valid_flag(const char *s, char *v)
 {
 	int i;
 	int j;
@@ -46,7 +46,7 @@ int			valid_flag(char *s, char *v)
 	return (1);
 }
 
-int			putflag(char *av, t_flags *flags)
+int			putflag(const char *av, t_flags *flags)
 {
 	int i;
 	int f;
@@ -70,7 +70,7 @@ int			putflag(char *av, t_flags *flags)
 	return (1);
 }
 
-int			find_flags(char **av, int ac, t_flags *flags)
+int			find_flags(const char **av, int ac, t_flags *flags)
 {
 	int		i;
 	int		f;
@@ -85,7 +85,7 @@ int			find_flags(char **av, int ac, t_flags *flags)
 		else
 			f++;
 		if (is_it_flag(av[i]) && f)
-			bust((const char *)av[i]);
+			bust(av[i]);
 		m == 2 ? f++ : 0;
 		i++;
 	}
