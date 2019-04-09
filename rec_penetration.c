@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/08 22:21:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:35:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,13 +168,13 @@ void		init(t_file *head, char **matr, t_flags *flags) // функция, из к
 	{
 		matr = get_rootnames(&matr, "./");
 		head = struct_filenames(&head, (const char **)matr, "./");
-		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
-		ft_putmatrix(matr);
+		matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
+		// ft_putmatrix(matr);
 	}
 	else
 	{
 		matr = argv_to_matrix((const char **)matr);
-		// matr = matrix_sort(head, &matr, flags);
+		matr = matrix_sort(head, &matr, flags);
 		// print_without_dir(); // функция должна печатать все файлы кроме директорий
 	}
 

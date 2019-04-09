@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/08 22:19:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:31:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct			s_file
 	char				*name;
 	char				*path;
 	int					type;
+	long				modif;
 	struct s_file		*next;
 }						t_file;
 
@@ -53,7 +54,7 @@ void					filedelone(t_file **file);
 t_file					*newlst(t_file	*new, const char *name, const char *path);
 t_file					*struct_filenames(t_file **head, const char **matr, const char *path);
 void					push_back(t_file **head, t_file *new);
-int						whatstype(const char *str);
+void					whatsspecific(const char *str, t_file **new);
 
 char					**get_rootnames(char ***ret, const char *path);
 int						number_of_files(const char *dir_name);

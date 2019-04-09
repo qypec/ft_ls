@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/08 22:18:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/09 19:21:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ t_file		*newlst(t_file	*new, const char *name, const char *path)
 		exit(1);
 	new->name = ft_strdup(name);
 	new->path = ft_strdup(path);
-	type = whatstype((const char *)full_name);
+	whatsspecific((const char *)full_name, &new);
 	// if (type == 0) // если тип не определен это удаляет узел
 	// {
 	// 	filedelone(&new);
 	// 	return (NULL);
 	// }
-	new->type = type;
 	new->next = NULL;
 	ft_strdel(&full_name);
 	return (new);
