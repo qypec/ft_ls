@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 09:28:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 11:40:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:51:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,21 @@ void		init(t_file *head, char **matr, t_flags *flags)
 	{
 		matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
 		head = struct_filenames(&head, (const char **)matr, "./", flags);
+		// ft_putmatrix(matr);
 		// matr = matrix_sort(head, &matr, flags);
+		while (matr[i] != NULL)
+		{
+			if ((tmp = find_list(&head, matr[i])) == NULL) /* пропускает несуществующие файлы */
+			{
+				i++;
+				continue ;
+			}
+			if (tmp->type == T_FILE)
+				ft_putendl(matr[i]);
+			i++;
+		}
+		ft_putchar('\n');
+		i = 0;
 		while (matr[i] != NULL)
 		{
 			if ((tmp = find_list(&head, matr[i])) == NULL) // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
@@ -40,14 +54,14 @@ void		init(t_file *head, char **matr, t_flags *flags)
 			}
 			if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
 			{
+				print_path(matr[i]);
 				new_path = get_path(tmp->name, tmp->path);
 				ft_matrixfree(&matr);
 				matr = get_rootnames(&matr, new_path, flags);
 				ft_strdel(&new_path);
 				ft_putmatrix(matr);
 			}
-			else
-				ft_putmatrix(matr);
+			// очистка tmp
 			i++;
 		}
 	}
