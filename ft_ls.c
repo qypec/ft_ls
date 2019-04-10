@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/09 23:31:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 08:59:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int		main(int argc, char **argv)
 		head = NULL;
 		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
 		{
-			printf("2\n");
+			// printf("2\n");
 			matr = NULL;
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
 				init(head, matr, &flags);
 		}
 		else /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
-			printf("1\n\n");
+			// printf("1\n\n");
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
 				init(head, argv, &flags);
 		}
