@@ -6,7 +6,7 @@
 /*   By: wconnell <wconnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:49:17 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/10 21:24:42 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:47:06 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		sort_by_time(t_file *head, char **s)
 		f = 0;
 		while (s[i] != NULL)
 		{
-			first = find_list(&head, s[i]);
+			if(first = find_list(&head, s[i]))
 			if(s[i + 1] != NULL)
 			{
 				second = find_list(&head, s[i + 1]);
