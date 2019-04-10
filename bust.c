@@ -18,7 +18,7 @@ void	bust(const char *file_name)
 	ft_puterror(file_name);
 	ft_puterror(": No such file or directory");
 	write(1, "\n", 1);
-	exit(1);
+	// exit(1);
 }
 
 void	usage(char c)
