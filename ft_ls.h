@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 11:41:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 12:19:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ void					conclusion_without_flags(char *dir_name);
 void					print(t_file *head, char **matr, t_flags *flags);
 void					print_without_dir(t_file *head, const char **matr);
 void					print_path(const char *path);
+
+char        			**matrix_sort(t_file *head, char **s, t_flags *flags);
 
 #endif
