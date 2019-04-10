@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 11:35:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 12:05:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,6 @@ int				main(int argc, char **argv)
 	// printf("a = %d\n", flags.a);
 	// printf("t = %d\n", flags.t);
 	// printf("r = %d\n", flags.r);
+
+// нужно прикручивать возможность передачи файлов по пути ./ft_ls libft author authra libft/afaf - сейчас не выводит последнюю, так как find_list ее не находит.
+// ./ft_ls -R tmp

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 11:51:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 12:10:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,23 @@ void		print_path(const char *path)
 	if (path[0] == '.' && path[1] == '/')
 		i += 2;
 	len = ft_strlen(path);
-	while (i != len - 1) /* убраем последнй слеш */
+	if (path[len - 1] == '/')
 	{
-		ft_putchar(path[i]);
-		i++;
+		while (i != len - 1) /* убраем последнй слеш */
+		{
+			ft_putchar(path[i]);
+			i++;
+		}
 	}
+	else
+	{
+		while (path[i] != '\0')
+		{
+			ft_putchar(path[i]);
+			i++;
+		}
+	}
+	// ft_putchar(path[i]);
 	ft_putchar(':');
 	ft_putchar('\n');
 }
