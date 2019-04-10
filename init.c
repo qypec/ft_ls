@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wconnell <wconnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 09:28:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 12:21:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 21:24:07 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		init(t_file *head, char **matr, t_flags *flags)
 	{
 		matr = get_rootnames(&matr, "./", flags);
 		head = struct_filenames(&head, (const char **)matr, "./", flags);
-		// matr = matrix_sort(head, matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
+		matr = matrix_sort(head, matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
 		print(head, matr, flags);
 	}
 	else
@@ -31,7 +31,7 @@ void		init(t_file *head, char **matr, t_flags *flags)
 		matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
 		head = struct_filenames(&head, (const char **)matr, "./", flags);
 		// ft_putmatrix(matr);
-		// matr = matrix_sort(head, &matr, flags);
+		matr = matrix_sort(head, matr, flags);
 		while (matr[i] != NULL) /* вывод файлов из argv, если не директория */
 		{
 			if ((tmp = find_list(&head, matr[i])) == NULL) /* пропускает несуществующие файлы */
@@ -58,6 +58,7 @@ void		init(t_file *head, char **matr, t_flags *flags)
 				new_path = get_path(tmp->name, tmp->path);
 				ft_matrixfree(&matr);
 				matr = get_rootnames(&matr, new_path, flags);
+				matr = matrix_sort(head, matr, flags); 
 				ft_strdel(&new_path);
 				ft_putmatrix(matr);
 			}
