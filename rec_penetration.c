@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 21:04:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 12:18:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,7 @@ void		rec_init(t_file *head, char **matr, t_flags *flags) // функция, и�
 		matr = get_rootnames(&matr, "./", flags);
 		head = struct_filenames(&head, (const char **)matr, "./", flags);
 		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
-		// print_without_dir(head, (const char **)matr);
-		ft_putmatrix(matr);
+		print_without_dir(head, (const char **)matr);
 	}
 	else
 	{
