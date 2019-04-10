@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 09:22:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:38:21 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,9 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	}
 }
 
-void		init(t_file *head, char **matr, t_flags *flags) // функция, из которой мы вызываем рекурсию
+void		rec_init(t_file *head, char **matr, t_flags *flags) // функция, из которой мы вызываем рекурсию
 {
+	printf("init");
 	t_file	*tmp;
 	char	*new_path;
 	int		i;

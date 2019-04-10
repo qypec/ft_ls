@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 08:59:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:35:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-int		only_flags(const char **argv) // определяет только ли флаги в argv
+	
+static int		only_flags(const char **argv) // определяет только ли флаги в argv
 {
 	int i;
 
@@ -27,7 +27,7 @@ int		only_flags(const char **argv) // определяет только ли ф�
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_file		*head;
 	t_file		*tmp;
@@ -45,12 +45,16 @@ int		main(int argc, char **argv)
 			// printf("2\n");
 			matr = NULL;
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
+				rec_init(head, matr, &flags);
+			else
 				init(head, matr, &flags);
 		}
 		else /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
-			// printf("1\n\n");
+			printf("1\n\n");
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
+				rec_init(head, argv, &flags);
+			else
 				init(head, argv, &flags);
 		}
 	}

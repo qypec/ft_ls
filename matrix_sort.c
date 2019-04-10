@@ -12,7 +12,6 @@
 
 #include "ft_ls.h"
 
-
 void        sort_by_time(t_file *head, char **s)
 {
      int    i;

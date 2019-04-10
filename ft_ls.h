@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 00:00:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/10 11:41:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,11 @@ int						can_i_add_hidden_file(const char *str, t_flags *flags);
 
 char					**get_rootnames(char ***ret, const char *path, t_flags *flags);
 int						number_of_files(const char *dir_name, t_flags *flags);
+char					*get_path(char *name, char *path);
 
 void					init(t_file *head, char **matr, t_flags *flags);
+void					rec_init(t_file *head, char **matr, t_flags *flags);
+char					**argv_to_matrix(const char **argv, t_file *head, t_flags *flags);
 t_file					*find_list(t_file **head, const char *name);
 
 void					conclusion_without_flags(char *dir_name);
