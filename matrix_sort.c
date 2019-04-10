@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wconnell <wconnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:49:17 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/10 16:49:59 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:49:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		sort_by_time(t_file *head, char **s)
 			if(s[i + 1] != NULL)
 			{
 				second = find_list(&head, s[i + 1]);
-				if (first->modif < second->modif)
+				if (first->modif git < second->modif)
 				{
 					s = ft_strswap(s, i, i + 1);
 					f++;
