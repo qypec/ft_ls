@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 19:13:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:28:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void		print_dir(char *path, t_flags *flags)
 {
-	ft_putendl("hee2l\n"); 
 	t_file	*head;
 	char	**matr;
 			
 	matr = get_rootnames(&matr, path, flags);
 	head = struct_filenames(&head, (const char **)matr, path, flags);
 	matr = matrix_sort(head, matr, flags);
-	ft_putendl("heel\n"); 
 	ft_putmatrix(matr);
-	//free head
+	structfree(&head);
 	ft_matrixfree(&matr);
 }
 

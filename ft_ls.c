@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 18:41:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:24:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void		no_argv(t_flags *flags)
 		matr = matrix_sort(head, matr, flags);
 		print(head, matr, flags);
 	}
+	ft_matrixfree(&matr);
+	structfree(&head);
 }
 
 int		only_flags(const char **argv) // определяет только ли флаги в argv
@@ -71,7 +73,7 @@ int				main(int argc, char **argv)
 	printf("\nexit!");
 	// else
 	// 	conclusion_without_flags(".");
-	// free(flags); // ??
+	
 }
 
 	// while (head != NULL)

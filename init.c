@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 09:28:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 19:07:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:25:25 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void		init(t_file *head, char **matr, t_flags *flags)
 			print_dir(new_path, flags);
 			ft_strdel(&new_path);
 		}
-		// очистка tmp
 		i++;		
 	}
-	// очистить matr и head
+	ft_matrixfree(&matr);
+	structfree(&head);
 }

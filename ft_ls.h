@@ -76,4 +76,6 @@ void					print_dir(char *path, t_flags *flags);
 
 char        			**matrix_sort(t_file *head, char **s, t_flags *flags);
 
+void					structfree(t_file **head);
+
 #endif

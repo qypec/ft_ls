@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:49:17 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/11 19:12:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:28:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,59 +71,59 @@ void		sort_by_time(t_file *head, char **s)
 	}
 }
 
-char	**reverse_arr(char **matr)
-{
-	int		i;
-	int		num;
-	char	**new;
-
-	i = 0;
-	num = 0;
-	while (matr[i] != NULL)
-	{
-		num++;
-		i++;
-	}
-	new = (char **)malloc(sizeof(char *) * num);
-	i = 0;
-	num--;
-	while (matr[i] != NULL)
-	{
-		// printf("num = %d\n", num);
-		new[num] = ft_strdup(matr[i]);
-		num--;
-		i++;
-	}
-	new[num] = NULL;
-	ft_matrixfree(&matr);
-	return (new);
-}
-
-// char        **reverse_arr(char **s)
+// char	**reverse_arr(char **matr)
 // {
-//     int     i;
-//     int     j;
-//     char    **new;
+// 	int		i;
+// 	int		num;
+// 	char	**new;
 
-//     i = 0;
-//     j = 0;
-//     while (s[i] != NULL)
-//         i++;
-//     if (!(new = (char **)malloc(sizeof(char *) * i)))
-//         return (NULL);
-//     // new[i] = NULL;
-//     i--;
-//     while (i >= 0)
-//     {
-//         new[j] = ft_strdup(s[i]);
-//         // new[j] = ft_strdup("145");
-//         j++;
-//         i--;
-//     }
-//     new[j] = NULL;
-//     ft_matrixfree(&s);
-//     return(new);
+// 	i = 0;
+// 	num = 0;
+// 	while (matr[i] != NULL)
+// 	{
+// 		num++;
+// 		i++;
+// 	}
+// 	new = (char **)malloc(sizeof(char *) * num);
+// 	i = 0;
+// 	num--;
+// 	while (matr[i] != NULL)
+// 	{
+// 		// printf("num = %d\n", num);
+// 		new[num] = ft_strdup(matr[i]);
+// 		num--;
+// 		i++;
+// 	}
+// 	new[num] = NULL;
+// 	ft_matrixfree(&matr);
+// 	return (new);
 // }
+
+char        **reverse_arr(char **s)
+{
+    int     i;
+    int     j;
+    char    **new;
+
+    i = 0;
+    j = 0;
+    while (s[i] != NULL)
+        i++;
+    if (!(new = (char **)malloc(sizeof(char *) * i)))
+        return (NULL);
+    // new[i] = NULL;
+    i--;
+    while (i >= 0)
+    {
+        new[j] = ft_strdup(s[i]);
+        // new[j] = ft_strdup("145");
+        j++;
+        i--;
+    }
+    new[j] = NULL;
+    ft_matrixfree(&s);
+    return(new);
+}
 char        **matrix_sort(t_file *head, char **s, t_flags *flags)
 {
 	// s = sort_by_ascii(s);

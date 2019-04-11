@@ -46,6 +46,7 @@ t_file		*newlst(t_file	*new, const char *name, const char *path)
 	if (whatsspecific((const char *)full_name, &new) == 0)
 	{
 		ft_strdel(&full_name);
+		free(new);
 		return (NULL);
 	}
 	new->name = ft_strdup(name);
@@ -68,7 +69,6 @@ t_file		*struct_filenames(t_file **head, const char **matr, const char *path, t_
 	i = 0;
 	while (matr[i] != NULL)
 	{
-
 		if ((new = newlst(new, matr[i], (const char *)path)) == NULL)
 		{
 			i++;
@@ -86,7 +86,5 @@ t_file		*struct_filenames(t_file **head, const char **matr, const char *path, t_
 	// 	printf("struct_type: %d\n\n", tmp->type);
 	// 	tmp = tmp->next;
 	// }
-
-	// filedelone(&new);
 	return (*head);
 }

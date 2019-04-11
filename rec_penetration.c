@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 19:06:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 20:24:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,10 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	int			i;
 	char		*new_path;
 
-	// print_path(path);
-	// ft_putchar('\n');
-	// ft_putstr(path);
-	// ft_putchar(':');
-	// ft_putchar('\n');
+	print_path(path);
+
 	i = 0;
 	head = NULL;
-	tmp = head;
 	matr = get_rootnames(&matr, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
 
 	// ft_putendl("rec");
@@ -46,7 +42,7 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 
 	head = struct_filenames(&head, (const char **)matr, path, flags);
 	matr = matrix_sort(head, matr, flags);
-	// print(head, matr, flags);
+	print(head, matr, flags);
 
 	// ft_putchar('\n');
 	// ft_putstr("govno tyt\n");
@@ -71,9 +67,10 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 			rec_penetration(new_path, flags);
 			ft_strdel(&new_path);
 		}
-		// очистить tmp тут
 		i++;
 	}
+	ft_matrixfree(&matr);
+	structfree(&head);
 }
 
 void		rec_init(t_file *head, char **argv, t_flags *flags) // функция, из которой мы вызываем рекурсию
@@ -85,11 +82,10 @@ void		rec_init(t_file *head, char **argv, t_flags *flags) // функция, и�
 
 	// ft_putmatrix(matr);
 	i = 0;
-	tmp = head;
 	matr = argv_to_matrix((const char **)argv, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
 	head = struct_filenames(&head, (const char **)matr, "./", flags);
 	matr = matrix_sort(head, matr, flags);
-	// print_without_dir(head, (const char **)matr); // функция должна печатать все файлы кроме директорий
+	print_without_dir(head, (const char **)matr); // функция должна печатать все файлы кроме директорий
 
 	while (matr[i] != NULL)
 	{
@@ -104,8 +100,8 @@ void		rec_init(t_file *head, char **argv, t_flags *flags) // функция, и�
 			rec_penetration((const char *)new_path, flags);
 			ft_strdel(&new_path);
 		}
-		// очистить tmp тут
 		i++;
 	}
-	// очистить matr и head
+	ft_matrixfree(&matr);
+	structfree(&head);
 }
