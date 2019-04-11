@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 12:18:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 00:04:23 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,36 @@ void		print_path(const char *path)
 	ft_putchar('\n');
 }
 
-void		print_without_dir(t_file *head, const char **matr)
+void		print_struct(t_file **head)
+{
+	t_file	*tmp;
+
+	tmp = *head;
+	if (tmp == NULL)
+		printf("null");
+	while (tmp != NULL)
+	{
+		ft_putendl(tmp->name);
+		tmp = tmp->next;
+	}
+}
+
+void		print_without_dir(t_file **head)
 {
 	t_file	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = head;
-	while (matr[i] != NULL)
+	tmp = *head;
+	while (tmp != NULL)
 	{
-		if ((tmp = find_list(&head, matr[i])) == NULL) /* функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список */
-		{
-			i++;
-			// очистить tmp;
-			continue ;
-		}
-		if (tmp->type != T_DIR) // если лист - папка 
-		{
-			ft_putendl(matr[i]);
-		}
-		// очистить tmp тут
-		i++;
+		if (tmp->type != T_DIR)
+			ft_putendl(tmp->name);
+		tmp = tmp->next;
 	}
 }
 
-void		print(t_file *head, char **matr, t_flags *flags)
-{
-	ft_putmatrix(matr); // пока так
-}
+// void		print(t_file *head, char **matr, t_flags *flags)
+// {
+// 	ft_putmatrix(matr); // пока так
+// }
