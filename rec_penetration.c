@@ -6,121 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 12:18:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 19:06:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-char		**argv_to_matrix(const char **argv, t_file *head, t_flags *flags)
-{
-	int		i;
-	int		num;
-	int		tmp;
-	char	**matr;
-
-	i = 0;
-	num = 0;
-	if (ft_strcmp(argv[0], "./ft_ls") == 0)
-		i++;
-	while (argv[i][0] == '-') // не учитывает того факта, что файл может начинаться на '-'
-		i++;
-	tmp = i;
-	while (argv[i] != NULL)
-	{
-		num++;
-		i++;
-	}
-	i = tmp;
-	if (!(matr = (char**)malloc(sizeof(char *) * (num + 1))))
-		return (NULL);
-	tmp = 0;
-	while (argv[i] != NULL)
-	{
-		// if (find_list(&head, argv[i]) != NULL)  если такой файл существует в struct 
-		// {
-			matr[tmp] = ft_strdup(argv[i]);
-			tmp++;
-		// }
-		i++;
-	}
-	matr[tmp] = NULL;
-	return (matr);
-}
-
-t_file		*find_list(t_file **head, const char *name)
-{
-	t_file	*tmp;
-
-	tmp = *head;
-	while (tmp != NULL)
-	{
-		if (ft_strcmp(tmp->name, name) == 0)
-			break ;
-		tmp = tmp->next;
-	}
-	if (tmp == NULL)
-		return (NULL);
-	return (tmp);
-}
-
-int			number_of_files(const char *dir_name, t_flags *flags)
-{
-	DIR				*dir;
-	struct dirent	*entry;
-	int				count;
-
-	count = 0;
-	dir = opendir(dir_name);
-	if (!dir)
-	{
-		perror("diropen");
-		exit(1);
-	}
-	while ((entry = readdir(dir)) != NULL)
-	{
-		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
-			continue ;
-		count++;
-	}
-	closedir(dir);
-	return (count);
-}
-
-char		**get_rootnames(char ***ret, const char *path, t_flags *flags)
-{
-	DIR				*dir;
-	struct dirent	*entry;
-	char			**matr;
-	int				i;
-	int				num;
-
-	i = 0;
-	matr = *ret;
-	// if (matr != NULL)
-	// 	matr = ft_matrixfree(&matr);
-	num = number_of_files(path, flags);
-	// printf("path = %s\nnum = %d\n", path, num);
-	dir = opendir(path);
-	if (!dir) // можно убрать, т.к. в number_of_files это проверяется.
-	{
-		perror("diropen");
-		exit(1);
-	}
-	if (!(matr = (char **)malloc(sizeof(char *) * (num + 1))))
-		return (NULL);
-	while ((entry = readdir(dir)) != NULL)
-	{
-		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
-			continue ;
-		matr[i] = ft_strdup(entry->d_name);
-		i++;
-	}
-	// printf("i = %d\n", i);
-	matr[i] = NULL;
-	closedir(dir);
-	return (matr);
-}
 
 char		*get_path(char *name, char *path)
 {
@@ -141,7 +31,7 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	int			i;
 	char		*new_path;
 
-	print_path(path);
+	// print_path(path);
 	// ft_putchar('\n');
 	// ft_putstr(path);
 	// ft_putchar(':');
@@ -150,13 +40,28 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	head = NULL;
 	tmp = head;
 	matr = get_rootnames(&matr, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
-	// printf("matr[0] = %s\n", matr[0]);
+
+	// ft_putendl("rec");
+	// ft_putendl(path);
+
 	head = struct_filenames(&head, (const char **)matr, path, flags);
-	// matr = matrix_sort(head, &matr, flags);
-	print(head, matr, flags);
+	matr = matrix_sort(head, matr, flags);
+	// print(head, matr, flags);
+
+	// ft_putchar('\n');
+	// ft_putstr("govno tyt\n");
+	// while (head != NULL)
+	// {
+	// 	printf("rec_name: %s\n", head->name);
+	// 	printf("rec_type: %d\n\n", head->type);
+	// 	head = head->next;
+	// }
+
 
 	while (matr[i] != NULL)
 	{
+		// write(1, "a", 1);
+		// ft_putstr(matr[i]);
 		tmp = find_list(&head, matr[i]); // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
 		// printf("tmp->name = %s\n", tmp->name);
 		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
@@ -171,31 +76,20 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	}
 }
 
-void		rec_init(t_file *head, char **matr, t_flags *flags) // функция, из которой мы вызываем рекурсию
+void		rec_init(t_file *head, char **argv, t_flags *flags) // функция, из которой мы вызываем рекурсию
 {
 	t_file	*tmp;
 	char	*new_path;
 	int		i;
+	char	**matr;
 
 	// ft_putmatrix(matr);
 	i = 0;
 	tmp = head;
-	if (matr == NULL) /* matr будет равен NULL только если в init передали не argv */
-	{
-		matr = get_rootnames(&matr, "./", flags);
-		head = struct_filenames(&head, (const char **)matr, "./", flags);
-		// matr = matrix_sort(head, &matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
-		print_without_dir(head, (const char **)matr);
-	}
-	else
-	{
-		matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
-		// ft_putmatrix(matr);
-
-		head = struct_filenames(&head, (const char **)matr, "./", flags);
-		// matr = matrix_sort(head, &matr, flags);
-		print_without_dir(head, (const char **)matr); // функция должна печатать все файлы кроме директорий
-	}
+	matr = argv_to_matrix((const char **)argv, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
+	head = struct_filenames(&head, (const char **)matr, "./", flags);
+	matr = matrix_sort(head, matr, flags);
+	// print_without_dir(head, (const char **)matr); // функция должна печатать все файлы кроме директорий
 
 	while (matr[i] != NULL)
 	{
@@ -213,4 +107,5 @@ void		rec_init(t_file *head, char **matr, t_flags *flags) // функция, и�
 		// очистить tmp тут
 		i++;
 	}
+	// очистить matr и head
 }

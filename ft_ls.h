@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 12:19:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 15:15:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char					*get_path(char *name, char *path);
 
 void					init(t_file *head, char **matr, t_flags *flags);
 void					rec_init(t_file *head, char **matr, t_flags *flags);
+void					rec_penetration(const char *path, t_flags *flags);
 char					**argv_to_matrix(const char **argv, t_file *head, t_flags *flags);
 t_file					*find_list(t_file **head, const char *name);
 
@@ -71,6 +72,7 @@ void					conclusion_without_flags(char *dir_name);
 void					print(t_file *head, char **matr, t_flags *flags);
 void					print_without_dir(t_file *head, const char **matr);
 void					print_path(const char *path);
+void					print_dir(char *path, t_flags *flags);
 
 char        			**matrix_sort(t_file *head, char **s, t_flags *flags);
 

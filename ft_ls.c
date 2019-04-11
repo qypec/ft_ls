@@ -6,13 +6,31 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 12:17:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 18:41:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-	
-static int		only_flags(const char **argv) // определяет только ли флаги в argv
+
+static void		no_argv(t_flags *flags)
+{
+	t_file		*head;
+	char		**matr;
+
+	head = NULL;
+	matr = NULL;
+	if (flags->R == 1) /* Если в есть флаг R, вызывает рекурсию */
+		rec_penetration("./", flags);
+	else
+	{
+		matr = get_rootnames(&matr, "./", flags);
+		head = struct_filenames(&head, (const char **)matr, "./", flags);
+		matr = matrix_sort(head, matr, flags);
+		print(head, matr, flags);
+	}
+}
+
+int		only_flags(const char **argv) // определяет только ли флаги в argv
 {
 	int i;
 
@@ -35,23 +53,15 @@ int				main(int argc, char **argv)
 	char		**matr;
 
 	flags = (t_flags){0, 0, 0, 0, 0};
-	// printf("matr[i] = %s\nlist = %s\n\n", argv[1], tmp->name);
 	if (argc > 1)
 	{
 		find_flags((const char **)argv, argc, &flags); /* заполняет структуру флагами из argv */
 		head = NULL;
 		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
-		{
-			// printf("2\n");
-			matr = NULL;
-			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
-				rec_init(head, matr, &flags);
-			else
-				init(head, matr, &flags);
-		}
+			no_argv(&flags);
 		else /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
-			printf("1\n\n");
+			// yes_argv(&flags)
 			if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
 				rec_init(head, argv, &flags);
 			else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wconnell <wconnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 09:28:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 21:52:59 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:07:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,54 +19,28 @@ void		init(t_file *head, char **matr, t_flags *flags)
 	int 	i;
 
 	i = 0;
-	if (matr == NULL) /* matr будет равен NULL только если в init передали не argv */
+	matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
+	head = struct_filenames(&head, (const char **)matr, "./", flags);
+	// ft_putmatrix(matr);
+	matr = matrix_sort(head, matr, flags);
+	print_without_dir(head, (const char **)matr);
+	
+	while (matr[i] != NULL)
 	{
-		matr = get_rootnames(&matr, "./", flags);
-		head = struct_filenames(&head, (const char **)matr, "./", flags);
-		matr = matrix_sort(head, matr, flags); // функция будет в зависимости от сортировочного флага сортировать матрицу
-		print(head, matr, flags);
-	}
-	else
-	{
-		matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
-		head = struct_filenames(&head, (const char **)matr, "./", flags);
-		// ft_putmatrix(matr);
-		matr = matrix_sort(head, matr, flags);
-		while (matr[i] != NULL) /* вывод файлов из argv, если не директория */
+		if ((tmp = find_list(&head, matr[i])) == NULL) // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
 		{
-			if ((tmp = find_list(&head, matr[i])) == NULL) /* пропускает несуществующие файлы */
-			{
-				i++;
-				continue ;
-			}
-			if (tmp->type == T_FILE)
-				ft_putendl(matr[i]);
-			i++;
+			i++;		/* такое возможно если в аргументы подали несуществующий файл */
+			continue ;
 		}
-		ft_putchar('\n');
-		i = 0;
-		while (matr[i] != NULL)
+		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
 		{
-			if ((tmp = find_list(&head, matr[i])) == NULL) // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
-			{
-				i++;		/* такое возможно если в аргументы подали несуществующий файл */
-				continue ;
-			}
-			if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
-			{
-				print_path(matr[i]);
-				new_path = get_path(tmp->name, tmp->path);
-				ft_matrixfree(&matr);
-				matr = get_rootnames(&matr, new_path, flags);
-				//free head
-				head = struct_filenames(&head, (const char **)matr, new_path, flags);
-				matr = matrix_sort(head, matr, flags); 
-				ft_strdel(&new_path);
-				ft_putmatrix(matr);
-			}
-			// очистка tmp
-			i++;
+			print_path(matr[i]);
+			new_path = get_path(tmp->name, tmp->path);
+			print_dir(new_path, flags);
+			ft_strdel(&new_path);
 		}
+		// очистка tmp
+		i++;		
 	}
 	// очистить matr и head
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:50:11 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/10 09:34:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/11 18:15:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	bust(const char *file_name)
 {
 	ft_puterror("ft_ls: ");
-	ft_puterror(file_name);
+	ft_puterror(file_name + 2); /* смещает указатель на 2 ( ./afka -> afka ) */
 	ft_puterror(": No such file or directory");
 	write(1, "\n", 1);
 	// exit(1);
