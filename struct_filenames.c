@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 23:49:57 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:07:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_file		*newlst(t_file	*new, const char *name, const char *path)
 		exit(1);
 	if (whatsspecific((const char *)full_name, &new) == 0) /* вернет 0, если файла не существует */
 	{
-		bust((const char *)full_name);
 		ft_strdel(&full_name);
 		return (NULL);
 	}

@@ -12,18 +12,6 @@
 
 #include "ft_ls.h"
 
-void		print_dir(char *path, t_flags *flags)
-{
-	t_file *head;
-
-	head = NULL;
-	head = get_rootnames(&head, path, flags);
-	//sort
-	print_struct(&head);
-	//очистка
-
-}
-
 void		init(t_file *head, char **argv, t_flags *flags)
 {
 	t_file	*tmp;

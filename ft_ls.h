@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 00:05:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 15:48:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int						whatsspecific(const char *str, t_file **new);
 void					push_back(t_file **head, t_file *new);
 
 void					print_struct(t_file **head);
+void					print_dir(char *path, t_flags *flags);
 void					print_without_dir(t_file **head);
 void					print_path(const char *path);
 

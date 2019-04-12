@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:50:11 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 23:05:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 15:56:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	bust(const char *file_name)
 
 void	usage(char c)
 {
-	ft_putstr_fd("ls: illegal option -- ", 2);
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putstr_fd("usage: ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]\n", 2);
+	ft_putstr_fd("usage: ft_ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]\n", 2);
 	exit(1);
 }

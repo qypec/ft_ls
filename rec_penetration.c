@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 00:05:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:29:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	DIR				*dir;
 	struct dirent	*entry;
 
-	// if (*head == NULL)
-		// printf("head = null \n");
 	dir = opendir(path);
 	if (!dir)
 	{
@@ -109,7 +107,6 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 		push_back(&(*head), new);
 	}
 	closedir(dir);
-
 	return (*head);
 }
 
@@ -128,14 +125,10 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 {
 	t_file		*head;
 	t_file		*tmp;
-	char		**matr;
-	int			i;
 	char		*new_path;
 
-	print_path(path);
-
-	i = 0;
 	head = NULL;
+	print_path(path);
 	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
 	// matr = matrix_sort(head, &matr, flags);
 	print_struct(&head);

@@ -6,12 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 00:05:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 16:25:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-	
+
 static int		only_flags(const char **argv) // определяет только ли флаги в argv
 {
 	int i;
@@ -41,12 +41,10 @@ int				main(int argc, char **argv)
 
 		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
 		{
-			// no_argv();
-			
-			// if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
-				// rec_init(head, argv, &flags);
-			// else
-				// init(head, argv, &flags);
+			if (flags.R == 1)
+				rec_penetration("./", &flags);
+			else
+				print_dir("./", &flags);
 		}
 		else  /* если нет, то работаем только с теми файлами, что поданы в argv */
 		{
@@ -56,6 +54,8 @@ int				main(int argc, char **argv)
 				init(head, argv, &flags);
 		}
 	}
+	else
+		print_dir("./", &flags);
 	printf("\nexit!");
 	// else
 	// 	conclusion_without_flags(".");
