@@ -50,9 +50,12 @@ int						can_i_add_hidden_file(const char *str, t_flags *flags);
 void					rec_init(t_file *head, const char **argv, t_flags *flags); /* подготовка к рекурсии */
 void					rec_penetration(const char *path, t_flags *flags); /* основная рекурсия  */
 
+void					init(t_file *head, char **argv, t_flags *flags);
+
 t_file					*struct_filenames(t_file **head, const char **argv, const char *path, t_flags *flags); /* создает список из argv */
 t_file					*get_rootnames(t_file **head, const char *path, t_flags *flags);
 t_file					*newlst(t_file	*new, const char *name, const char *path); /* выделение памяти, заполнение информацией элемента списка */
+char					*get_path(char *name, char *path);
 int						whatsspecific(const char *str, t_file **new);
 void					push_back(t_file **head, t_file *new);
 

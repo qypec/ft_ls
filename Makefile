@@ -11,5 +11,5 @@
 # **************************************************************************** #
 
 all:
-	gcc -o ft_ls print.c rec_penetration.c flags.c push_back.c struct_filenames.c whatsspecific.c bust.c ft_ls.c libft/*.c
+	gcc -o ft_ls print.c rec_penetration.c init.c flags.c push_back.c struct_filenames.c whatsspecific.c bust.c ft_ls.c libft/*.c
 	# ./ft_ls filename

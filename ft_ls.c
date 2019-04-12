@@ -39,24 +39,22 @@ int				main(int argc, char **argv)
 		find_flags((const char **)argv, argc, &flags); /* заполняет структуру флагами из argv */
 		head = NULL;
 
-		head = get_rootnames(&head, "./", &flags);
-		print_struct(&head);
-
-		// if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
-		// {
-		// 	if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
-		// 		rec_init(head, &flags);
-		// 	else
-		// 		init(head, matr, &flags);
-		// }
-		// else  если нет, то работаем только с теми файлами, что поданы в argv 
-		// {
-			// printf("1\n\n");
-			// if (flags.R == 1)   Если в argv есть флаг R, вызывает рекурсию 
-				// rec_init(head, (const char **)argv, &flags);
+		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
+		{
+			// no_argv();
+			
+			// if (flags.R == 1) /* Если в argv есть флаг R, вызывает рекурсию */
+				// rec_init(head, argv, &flags);
 			// else
-			// 	init(head, argv, &flags);
-		// }
+				// init(head, argv, &flags);
+		}
+		else  /* если нет, то работаем только с теми файлами, что поданы в argv */
+		{
+			if (flags.R == 1)  /* Если в argv есть флаг R, вызывает рекурсию */
+				rec_init(head, (const char **)argv, &flags);
+			else
+				init(head, argv, &flags);
+		}
 	}
 	printf("\nexit!");
 	// else

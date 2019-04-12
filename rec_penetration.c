@@ -93,6 +93,8 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	DIR				*dir;
 	struct dirent	*entry;
 
+	// if (*head == NULL)
+		// printf("head = null \n");
 	dir = opendir(path);
 	if (!dir)
 	{
@@ -104,10 +106,10 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
 			continue ;
 		new = newlst(new, entry->d_name, path); /* Никогда new != NULL, т.к. тут не может быть несуществующих файлов */
-			continue ;
 		push_back(&(*head), new);
 	}
 	closedir(dir);
+
 	return (*head);
 }
 
@@ -158,7 +160,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 
 	head = struct_filenames(&head, argv, "./", flags);
 	// matr = matrix_sort(head, &matr, flags);
-	print_without_dir(&head); // функция должна печатать все файлы кроме директорий
+	print_without_dir(&head); /* функция печатает все файлы кроме директорий */
 	tmp = head;
 	while (tmp != NULL)
 	{
