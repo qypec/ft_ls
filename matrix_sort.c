@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wconnell <wconnell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:49:17 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/10 21:47:06 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:55:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void		sort_by_time(t_file *head, char **s)
 		}
 	}
 }
+
 char        **reverse_arr(char **s)
 {
     int     i;
@@ -93,6 +94,7 @@ char        **reverse_arr(char **s)
     ft_matrixfree(&s);
     return(new);
 }
+
 char        **matrix_sort(t_file *head, char **s, t_flags *flags)
 {
 	s = sort_by_ascii(s);

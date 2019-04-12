@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 16:11:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:04:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		print_dir(char *path, t_flags *flags)
 	head = get_rootnames(&head, path, flags);
 	//sort
 	print_struct(&head);
-	//очистка
+	structfree(&head);
 }
 
 void		print_path(const char *path)
@@ -61,8 +61,6 @@ void		print_struct(t_file **head)
 	t_file	*tmp;
 
 	tmp = *head;
-	// if (tmp == NULL)
-	// 	printf("null");
 	while (tmp != NULL)
 	{
 		ft_putendl(tmp->name);

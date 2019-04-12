@@ -6,86 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 16:29:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:20:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-// char		**argv_to_matrix(const char **argv, t_file *head, t_flags *flags)
-// {
-// 	int		i;
-// 	int		num;
-// 	int		tmp;
-// 	char	**matr;
-
-// 	i = 0;
-// 	num = 0;
-// 	if (ft_strcmp(argv[0], "./ft_ls") == 0)
-// 		i++;
-// 	while (argv[i][0] == '-') // не учитывает того факта, что файл может начинаться на '-'
-// 		i++;
-// 	tmp = i;
-// 	while (argv[i] != NULL)
-// 	{
-// 		num++;
-// 		i++;
-// 	}
-// 	i = tmp;
-// 	if (!(matr = (char**)malloc(sizeof(char *) * (num + 1))))
-// 		return (NULL);
-// 	tmp = 0;
-// 	while (argv[i] != NULL)
-// 	{
-// 		// if (find_list(&head, argv[i]) != NULL)  если такой файл существует в struct 
-// 		// {
-// 			matr[tmp] = ft_strdup(argv[i]);
-// 			tmp++;
-// 		// }
-// 		i++;
-// 	}
-// 	matr[tmp] = NULL;
-// 	return (matr);
-// }
-
-// t_file		*find_list(t_file **head, const char *name)
-// {
-// 	t_file	*tmp;
-
-// 	tmp = *head;
-// 	while (tmp != NULL)
-// 	{
-// 		if (ft_strcmp(tmp->name, name) == 0)
-// 			break ;
-// 		tmp = tmp->next;
-// 	}
-// 	if (tmp == NULL)
-// 		return (NULL);
-// 	return (tmp);
-// }
-
-// int			number_of_files(const char *dir_name, t_flags *flags)
-// {
-// 	DIR				*dir;
-// 	struct dirent	*entry;
-// 	int				count;
-
-// 	count = 0;
-// 	dir = opendir(dir_name);
-// 	if (!dir)
-// 	{
-// 		perror("diropen");
-// 		exit(1);
-// 	}
-// 	while ((entry = readdir(dir)) != NULL)
-// 	{
-// 		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
-// 			continue ;
-// 		count++;
-// 	}
-// 	closedir(dir);
-// 	return (count);
-// }
 
 t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 {
@@ -143,7 +68,8 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 		}
 		tmp = tmp->next;
 	}
-	// structfree(&head);
+	if (head != NULL)
+		structfree(&head);
 }
 
 void		rec_init(t_file *head, const char **argv, t_flags *flags) // функция, из которой мы вызываем рекурсию
@@ -165,5 +91,5 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 		}
 		tmp = tmp->next;
 	}
-	// structfree(&head);
+	structfree(&head);
 }

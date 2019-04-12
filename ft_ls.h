@@ -67,4 +67,6 @@ void					print_path(const char *path);
 void					bust(const char *file_name);
 void					usage(char c);
 
+void					structfree(t_file **head);
+
 #endif

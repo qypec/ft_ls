@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 16:07:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 17:25:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,14 @@ int			can_i_add_hidden_file(const char *str, t_flags *flags)
 	return (1);
 }
 
-// void		filedelone(t_file **file)
-// {
-// 	if (file == NULL)
-// 		return ;
-// 	ft_strdel(&((*file)->name));
-// 	ft_strdel(&((*file)->path));
-// 	free(*file);
-// 	*file = NULL;
-// }
-
 t_file		*newlst(t_file	*new, const char *name, const char *path)
 {
 	int		type;
 	char	*full_name;
 
-	full_name = ft_strjoin(path, name); // чтобы использовать stat в функции whatstype
 	if (!(new = malloc(sizeof(t_file))))
 		exit(1);
+	full_name = ft_strjoin(path, name); // чтобы использовать stat в функции whatstype
 	if (whatsspecific((const char *)full_name, &new) == 0) /* вернет 0, если файла не существует */
 	{
 		ft_strdel(&full_name);
