@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 16:40:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 20:28:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 #include <pwd.h>
+#include <time.h>
 
 # define T_FILE	1
 # define T_DIR	2
@@ -39,9 +40,11 @@ typedef struct			s_file
 	char				*name;
 	char				*path;
 	int					type;
-	long				modif;
+	long int			modif;
+	char				*date;
 	char				*username;
 	int					size;
+	char				*year;
 	int					numlink;
 	char				*chmod;
 	struct s_file		*next;

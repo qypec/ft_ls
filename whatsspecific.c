@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 16:35:31 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 21:42:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,37 @@ char	*get_chmod(mode_t mode)
 	return (str);
 }
 
+// char	*get_year(long int seconds)
+// {
+// 	char	*str;
+// 	char	*year;
+// 	int		i;
+// 	int		j;
+// 	int		len;
+
+// 	str = ctime(&seconds);
+// 		printf("time = %s\n", str);
+// 	year = (char *)ft_memalloc(5);
+// 	i = ft_strlen(str);
+// 	while (str[i] != ' ')
+// 		i++;
+// 	printf("i = %d\n", i);
+// 	return (year);
+// }
+
+char	*get_date(long int seconds)
+{
+	char	*str;
+	char	*parse1;
+	char	*parse2;
+
+	str = ctime(&seconds);
+	parse1 = ft_strncut(str, 4);
+	parse2 = ft_strencut(parse1, 9);
+	ft_strdel(&parse1);
+	return (parse2);
+}
+
 int		whatsspecific(const char *str, t_file **new) // что насчет очистки buff? 
 {
 	struct stat		buff;
@@ -63,9 +94,10 @@ int		whatsspecific(const char *str, t_file **new) // что насчет очи�
 	(*new)->chmod = get_chmod(buff.st_mode);
 	(*new)->numlink = buff.st_nlink;
 	(*new)->username = ft_strdup(pwd->pw_name);
-	// year
 	(*new)->size = buff.st_size;
 	(*new)->modif = buff.st_mtime;
+	(*new)->date = get_date((*new)->modif);
+	(*new)->year = ft_strdup("2019");
 	if (S_ISREG(buff.st_mode))
 		(*new)->type = T_FILE;
     else if (S_ISDIR(buff.st_mode)) 

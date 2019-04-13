@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 16:48:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 21:28:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void		print_l(t_file **head)
 		ft_putstr(" ");
 		ft_putstr(tmp->username);
 		ft_putstr("  ");
-		ft_putstr("year"); // print year
+		ft_putstr(tmp->year); // print year
 		ft_putstr("  ");
 		ft_putstr(ft_itoa(tmp->size));
 		ft_putstr(" ");
-		ft_putstr("date"); // print date
+		ft_putstr(tmp->date); // print date
 		ft_putstr(" ");
 		ft_putendl(tmp->name);
 		tmp = tmp->next;
