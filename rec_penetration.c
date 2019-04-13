@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 17:20:38 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 21:00:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 	print_path(path);
 	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
 	// matr = matrix_sort(head, &matr, flags);
-	print_struct(&head);
+	print_struct(&head, flags);
 	tmp = head;
 	while (tmp != NULL)
 	{
@@ -79,7 +79,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 
 	head = struct_filenames(&head, argv, "./", flags);
 	// matr = matrix_sort(head, &matr, flags);
-	print_without_dir(&head); /* функция печатает все файлы кроме директорий */
+	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
 	tmp = head;
 	while (tmp != NULL)
 	{
