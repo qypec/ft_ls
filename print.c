@@ -6,11 +6,36 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 16:11:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 21:28:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void		print_l(t_file **head)
+{
+	t_file *tmp;
+
+	tmp = *head;
+	ft_putendl("total");
+	while (tmp != NULL)
+	{
+		ft_putstr(tmp->chmod);
+		ft_putstr("   ");
+		ft_putstr(ft_itoa(tmp->numlink)); // bla
+		ft_putstr(" ");
+		ft_putstr(tmp->username);
+		ft_putstr("  ");
+		ft_putstr(tmp->year); // print year
+		ft_putstr("  ");
+		ft_putstr(ft_itoa(tmp->size));
+		ft_putstr(" ");
+		ft_putstr(tmp->date); // print date
+		ft_putstr(" ");
+		ft_putendl(tmp->name);
+		tmp = tmp->next;
+	}
+}
 
 void		print_dir(char *path, t_flags *flags)
 {
@@ -19,8 +44,8 @@ void		print_dir(char *path, t_flags *flags)
 	head = NULL;
 	head = get_rootnames(&head, path, flags);
 	//sort
-	print_struct(&head);
-	//очистка
+	print_struct(&head, flags);
+	structfree(&head);
 }
 
 void		print_path(const char *path)
@@ -56,32 +81,45 @@ void		print_path(const char *path)
 	ft_putchar('\n');
 }
 
-void		print_struct(t_file **head)
+void		print_struct(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
 
 	tmp = *head;
-	// if (tmp == NULL)
-	// 	printf("null");
-	while (tmp != NULL)
+	if (flags->l == 1)
 	{
-		ft_putendl(tmp->name);
-		tmp = tmp->next;
+		print_l(head);
+	}
+	else
+	{
+		while (tmp != NULL)
+		{
+			ft_putendl(tmp->name);
+	 		tmp = tmp->next;
+		}
 	}
 }
 
-void		print_without_dir(t_file **head)
+void		print_without_dir(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
 	int		i;
 
 	i = 0;
 	tmp = *head;
-	while (tmp != NULL)
+	if (flags->l == 1)
 	{
-		if (tmp->type != T_DIR)
-			ft_putendl(tmp->name);
-		tmp = tmp->next;
+		// printf("no l-flags functional\n");
+		print_l(head);
+	}
+	else
+	{
+		while (tmp != NULL)
+		{
+			if (tmp->type != T_DIR)
+				ft_putendl(tmp->name);
+			tmp = tmp->next;
+		}
 	}
 }
 

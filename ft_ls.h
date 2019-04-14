@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 15:48:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 20:28:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include <pwd.h>
+#include <time.h>
 
 # define T_FILE	1
 # define T_DIR	2
@@ -38,7 +40,13 @@ typedef struct			s_file
 	char				*name;
 	char				*path;
 	int					type;
-	long				modif;
+	long int			modif;
+	char				*date;
+	char				*username;
+	int					size;
+	char				*year;
+	int					numlink;
+	char				*chmod;
 	struct s_file		*next;
 }						t_file;
 
@@ -59,12 +67,14 @@ char					*get_path(char *name, char *path);
 int						whatsspecific(const char *str, t_file **new);
 void					push_back(t_file **head, t_file *new);
 
-void					print_struct(t_file **head);
+void					print_struct(t_file **head, t_flags *flags);
 void					print_dir(char *path, t_flags *flags);
-void					print_without_dir(t_file **head);
+void					print_without_dir(t_file **head, t_flags *flags);
 void					print_path(const char *path);
 
 void					bust(const char *file_name);
 void					usage(char c);
+
+void					structfree(t_file **head);
 
 #endif

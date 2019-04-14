@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 16:25:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 21:35:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int		only_flags(const char **argv) // определяет только �
 int				main(int argc, char **argv)
 {
 	t_file		*head;
-	t_file		*tmp;
 	t_flags		flags;
 
 	flags = (t_flags){0, 0, 0, 0, 0};

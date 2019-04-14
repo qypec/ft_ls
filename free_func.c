@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   free_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 11:44:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 18:45:06 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/12 17:03:35 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/12 17:32:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_ls.h"
 
-void	ft_strdel(char **as)
+void	structfree(t_file **head)
 {
-	if (!as)
-		return ;
-	free(*as);
-	*as = NULL;
+	if (head)
+	{
+		if ((*head)->next)
+		{
+			ft_strdel(&(*head)->name);
+			ft_strdel(&(*head)->path);
+			structfree(&(*head)->next);
+		}
+		free(*head);
+		*head = NULL;
+	}
 }
