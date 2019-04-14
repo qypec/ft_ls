@@ -1,7 +1,7 @@
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
-.idea
+.idea/*
 CMakeScripts
 Testing
 Makefile
