@@ -41,7 +41,7 @@ int				main(int argc, char **argv)
 		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
 		{
 			if (flags.R == 1)
-				rec_penetration("./", &flags);
+				rec_penetration("./", &flags, 0);
 			else
 				print_dir("./", &flags);
 		}
@@ -55,7 +55,7 @@ int				main(int argc, char **argv)
 	}
 	else
 		print_dir("./", &flags);
-	printf("\nexit!");
+	// printf("\nexit!");
 	// else
 	// 	conclusion_without_flags(".");
 	// free(flags); // ??

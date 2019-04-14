@@ -14,15 +14,12 @@
 
 void	structfree(t_file **head)
 {
-	if (head)
+	if ((*head) != NULL)
 	{
-		if ((*head)->next)
-		{
-			ft_strdel(&(*head)->name);
-			ft_strdel(&(*head)->path);
-			structfree(&(*head)->next);
-		}
-		free(*head);
-		*head = NULL;
+		ft_strdel(&(*head)->name);
+		ft_strdel(&(*head)->path);
+		structfree(&(*head)->next);
 	}
+	free(*head);
+	*head = NULL;
 }

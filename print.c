@@ -12,29 +12,21 @@
 
 #include "ft_ls.h"
 
-void		print_l(t_file **head)
+void		print_l(t_file *tmp)
 {
-	t_file *tmp;
-
-	tmp = *head;
-	ft_putendl("total");
-	while (tmp != NULL)
-	{
-		ft_putstr(tmp->chmod);
-		ft_putstr("   ");
-		ft_putstr(ft_itoa(tmp->numlink)); // bla
-		ft_putstr(" ");
-		ft_putstr(tmp->username);
-		ft_putstr("  ");
-		ft_putstr(tmp->year); // print year
-		ft_putstr("  ");
-		ft_putstr(ft_itoa(tmp->size));
-		ft_putstr(" ");
-		ft_putstr(tmp->date); // print date
-		ft_putstr(" ");
-		ft_putendl(tmp->name);
-		tmp = tmp->next;
-	}
+	ft_putstr(tmp->chmod);
+	ft_putstr("   ");
+	ft_putstr(ft_itoa(tmp->numlink)); // bla
+	ft_putstr(" ");
+	ft_putstr(tmp->username);
+	ft_putstr("  ");
+	ft_putstr(tmp->year); // print year
+	ft_putstr("  ");
+	ft_putstr(ft_itoa(tmp->size));
+	ft_putstr(" ");
+	ft_putstr(tmp->date); // print date
+	ft_putstr(" ");
+	ft_putendl(tmp->name);
 }
 
 void		print_dir(char *path, t_flags *flags)
@@ -55,7 +47,7 @@ void		print_path(const char *path)
 
 	i = 0;
 	len = 0;
-	ft_putchar('\n');
+	// ft_putchar('\n');
 	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
 		return ;
 	if (path[0] == '.' && path[1] == '/')
@@ -78,7 +70,7 @@ void		print_path(const char *path)
 		}
 	}
 	ft_putchar(':');
-	ft_putchar('\n');
+	// ft_putchar('\n');
 }
 
 void		print_struct(t_file **head, t_flags *flags)
@@ -86,18 +78,26 @@ void		print_struct(t_file **head, t_flags *flags)
 	t_file	*tmp;
 
 	tmp = *head;
+	if (*head == NULL)
+	{
+		ft_putchar('\n');
+		return ;
+	}
 	if (flags->l == 1)
 	{
-		print_l(head);
+		ft_putchar('\n');
+		ft_putendl("total");
+		//  число total
 	}
-	else
+	while (tmp != NULL)
 	{
-		while (tmp != NULL)
-		{
+		if (flags->l == 1)
+			print_l(tmp);
+		else
 			ft_putendl(tmp->name);
-	 		tmp = tmp->next;
-		}
+		tmp = tmp->next;
 	}
+	ft_putchar('\n');
 }
 
 void		print_without_dir(t_file **head, t_flags *flags)
@@ -107,20 +107,24 @@ void		print_without_dir(t_file **head, t_flags *flags)
 
 	i = 0;
 	tmp = *head;
-	if (flags->l == 1)
+	if (flags->l == 1 && tmp->type != T_DIR)
 	{
-		// printf("no l-flags functional\n");
-		print_l(head);
+		ft_putchar('\n');
+		ft_putendl("total");
+		//  число total
 	}
-	else
+	while (tmp != NULL)
 	{
-		while (tmp != NULL)
+		if (tmp->type != T_DIR)
 		{
-			if (tmp->type != T_DIR)
+			if (flags->l == 1)
+				print_l(tmp);
+			else
 				ft_putendl(tmp->name);
-			tmp = tmp->next;
 		}
+		tmp = tmp->next;
 	}
+	ft_putchar('\n');
 }
 
 // void		print(t_file *head, char **matr, t_flags *flags)
