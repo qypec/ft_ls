@@ -52,11 +52,12 @@ typedef struct			s_file
 
 int						find_flags(const char **av, int ac, t_flags *flags); /* создается и проверяется на валидность структура флагов */
 int						is_it_flag(const char *s);
+int						is_onlyone_arg(t_file *head);
 
 int						can_i_add_hidden_file(const char *str, t_flags *flags);
 
 void					rec_init(t_file *head, const char **argv, t_flags *flags); /* подготовка к рекурсии */
-void					rec_penetration(const char *path, t_flags *flags); /* основная рекурсия  */
+void					rec_penetration(const char *path, t_flags *flags, int path_flag); /* основная рекурсия  */
 
 void					init(t_file *head, char **argv, t_flags *flags);
 

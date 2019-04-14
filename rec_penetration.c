@@ -46,14 +46,16 @@ char		*get_path(char *name, char *path)
 	return (tmp2);
 }
 
-void		rec_penetration(const char *path, t_flags *flags) // рекурсия
+void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рекурсия
 {
 	t_file		*head;
 	t_file		*tmp;
 	char		*new_path;
 
 	head = NULL;
-	print_path(path);
+	if (path_flag != 1)
+		print_path(path);
+	path_flag = 0;
 	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
 	sort_list(&head, flags);
 	print_struct(&head, flags);
@@ -63,7 +65,7 @@ void		rec_penetration(const char *path, t_flags *flags) // рекурсия
 		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
-			rec_penetration((const char *)new_path, flags);
+			rec_penetration((const char *)new_path, flags, 0);
 			ft_strdel(&new_path);
 		}
 		tmp = tmp->next;
@@ -76,7 +78,9 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 {
 	t_file	*tmp;
 	char	*new_path;
+	int		path_flag;
 
+	path_flag = 0;
 	head = struct_filenames(&head, argv, "./", flags);
 	sort_list(&head, flags);
 	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
@@ -86,7 +90,8 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
-			rec_penetration((const char *)new_path, flags);
+			path_flag = is_onlyone_arg(head);
+			rec_penetration((const char *)new_path, flags, path_flag);
 			ft_strdel(&new_path);
 		}
 		tmp = tmp->next;
