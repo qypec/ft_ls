@@ -57,11 +57,11 @@ t_file		*struct_filenames(t_file **head, const char **argv, const char *path, t_
 			i++;
 			continue ;
 		}
-		if (can_i_add_hidden_file(argv[i], flags) == 0)
-		{
-			i++;
-			continue ;
-		}
+		// if (can_i_add_hidden_file(argv[i], flags) == 0)
+		// {
+		// 	i++;
+		// 	continue ;
+		// }
 		if ((new = newlst(new, argv[i], (const char *)path)) == NULL)
 		{
 			i++;
