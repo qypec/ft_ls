@@ -1,7 +1,9 @@
 CMakeLists.txt.user
+Makefile
+libft/Makefile
 CMakeCache.txt
 CMakeFiles
-.idea/*
+.idea
 CMakeScripts
 Testing
 Makefile
