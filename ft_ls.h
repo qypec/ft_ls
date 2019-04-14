@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 15:15:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 20:28:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include <pwd.h>
+#include <time.h>
 
 # define T_FILE	1
 # define T_DIR	2
@@ -38,43 +40,44 @@ typedef struct			s_file
 	char				*name;
 	char				*path;
 	int					type;
-	long				modif;
+	long int			modif;
+	char				*date;
+	char				*username;
+	int					size;
+	char				*year;
+	int					numlink;
+	char				*chmod;
+	long long int		totalsize;
 	struct s_file		*next;
 }						t_file;
 
-int						find_flags(const char **av, int ac, t_flags *flags);
-int						valid_flag(const char *s, char *v);
+int						find_flags(const char **av, int ac, t_flags *flags); /* создается и проверяется на валидность структура флагов */
 int						is_it_flag(const char *s);
-int						putflag(const char *av, t_flags *flags);
-void					usage(char c);
-
-void					bust(const char *file_name);
-
-void					filedelone(t_file **file);
-t_file					*newlst(t_file	*new, const char *name, const char *path);
-t_file					*struct_filenames(t_file **head, const char **matr, const char *path, t_flags *flags);
-void					push_back(t_file **head, t_file *new);
-int						whatsspecific(const char *str, t_file **new);
+int						is_onlyone_arg(t_file *head);
 
 int						can_i_add_hidden_file(const char *str, t_flags *flags);
 
-char					**get_rootnames(char ***ret, const char *path, t_flags *flags);
-int						number_of_files(const char *dir_name, t_flags *flags);
+void					rec_init(t_file *head, const char **argv, t_flags *flags); /* подготовка к рекурсии */
+void					rec_penetration(const char *path, t_flags *flags, int path_flag); /* основная рекурсия  */
+
+void					init(t_file *head, char **argv, t_flags *flags);
+
+t_file					*struct_filenames(t_file **head, const char **argv, const char *path, t_flags *flags); /* создает список из argv */
+t_file					*get_rootnames(t_file **head, const char *path, t_flags *flags);
+t_file					*newlst(t_file	*new, const char *name, const char *path); /* выделение памяти, заполнение информацией элемента списка */
 char					*get_path(char *name, char *path);
+int						whatsspecific(const char *str, t_file **new);
+void					push_back(t_file **head, t_file *new);
 
-void					init(t_file *head, char **matr, t_flags *flags);
-void					rec_init(t_file *head, char **matr, t_flags *flags);
-void					rec_penetration(const char *path, t_flags *flags);
-char					**argv_to_matrix(const char **argv, t_file *head, t_flags *flags);
-t_file					*find_list(t_file **head, const char *name);
+void					sort_list(t_file **head, t_flags *flags);
 
-void					conclusion_without_flags(char *dir_name);
-void					print(t_file *head, char **matr, t_flags *flags);
-void					print_without_dir(t_file *head, const char **matr);
-void					print_path(const char *path);
+void					print_struct(t_file **head, t_flags *flags);
 void					print_dir(char *path, t_flags *flags);
+void					print_without_dir(t_file **head, t_flags *flags);
+void					print_path(const char *path);
 
-char        			**matrix_sort(t_file *head, char **s, t_flags *flags);
+void					bust(const char *file_name);
+void					usage(char c);
 
 void					structfree(t_file **head);
 

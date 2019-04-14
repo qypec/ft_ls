@@ -6,23 +6,45 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 20:28:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/13 21:28:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
+void		print_l(t_file *tmp)
+{
+	char	*str1;
+	char	*str2;
+
+	ft_putstr(tmp->chmod);
+	ft_putstr("   ");
+	str2 = ft_itoa(tmp->numlink);
+	ft_putstr(str2);
+	ft_strdel(&str2);
+	ft_putstr(" ");
+	ft_putstr(tmp->username);
+	ft_putstr("  ");
+	ft_putstr(tmp->year); // print year
+	ft_putstr("  ");
+	str1 = ft_itoa(tmp->size);
+	ft_putstr(str1);
+	ft_strdel(&str1);
+	ft_putstr(" ");
+	ft_putstr(tmp->date); // print date
+	ft_putstr(" ");
+	ft_putendl(tmp->name);
+}
+
 void		print_dir(char *path, t_flags *flags)
 {
-	t_file	*head;
-	char	**matr;
-			
-	matr = get_rootnames(&matr, path, flags);
-	head = struct_filenames(&head, (const char **)matr, path, flags);
-	matr = matrix_sort(head, matr, flags);
-	ft_putmatrix(matr);
+	t_file *head;
+
+	head = NULL;
+	head = get_rootnames(&head, path, flags);
+	sort_list(&head, flags);
+	print_struct(&head, flags);
 	structfree(&head);
-	ft_matrixfree(&matr);
 }
 
 void		print_path(const char *path)
@@ -32,7 +54,9 @@ void		print_path(const char *path)
 
 	i = 0;
 	len = 0;
-	ft_putchar('\n');
+	// ft_putchar('\n');
+	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
+		return ;
 	if (path[0] == '.' && path[1] == '/')
 		i += 2;
 	len = ft_strlen(path);
@@ -53,34 +77,66 @@ void		print_path(const char *path)
 		}
 	}
 	ft_putchar(':');
+	// ft_putchar('\n');
+}
+
+void		print_struct(t_file **head, t_flags *flags)
+{
+	t_file	*tmp;
+	char	*no_leaks;
+
+	tmp = *head;
+	if (*head == NULL)
+	{
+		ft_putchar('\n');
+		return ;
+	}
+	if (flags->l == 1)
+	{
+		ft_putstr("\ntotal ");
+		no_leaks = ft_itoa(tmp->totalsize);
+		ft_putendl(no_leaks);
+		ft_strdel(&no_leaks);
+	}
+	while (tmp != NULL)
+	{
+		if (flags->l == 1)
+			print_l(tmp);
+		else
+			ft_putendl(tmp->name);
+		tmp = tmp->next;
+	}
 	ft_putchar('\n');
 }
 
-void		print_without_dir(t_file *head, const char **matr)
+void		print_without_dir(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = head;
-	while (matr[i] != NULL)
+	tmp = *head;
+	if (flags->l == 1 && tmp->type != T_DIR)
 	{
-		if ((tmp = find_list(&head, matr[i])) == NULL) /* функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список */
-		{
-			i++;
-			// очистить tmp;
-			continue ;
-		}
-		if (tmp->type != T_DIR) // если лист - не директория 
-		{
-			ft_putendl(matr[i]);
-		}
-		// очистить tmp тут
-		i++;
+		ft_putchar('\n');
+		ft_putstr("total ");
+		ft_putendl(ft_itoa(tmp->totalsize));
 	}
+	while (tmp != NULL)
+	{
+		if (tmp->type != T_DIR)
+		{
+			if (flags->l == 1)
+				print_l(tmp);
+			else
+				ft_putendl(tmp->name);
+		}
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
 }
 
-void		print(t_file *head, char **matr, t_flags *flags)
-{
-	ft_putmatrix(matr); // пока так
-}
+// void		print(t_file *head, char **matr, t_flags *flags)
+// {
+// 	ft_putmatrix(matr); // пока так
+// }

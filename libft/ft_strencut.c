@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_strencut.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 11:44:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 18:45:06 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/13 19:52:49 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/13 20:24:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strdel(char **as)
+char	*ft_strencut(char *str, int n)
 {
-	if (!as)
-		return ;
-	free(*as);
-	*as = NULL;
+	char	*segment;
+	int		i;
+	int		len;
+
+	if (str == NULL)
+		return (NULL);
+	if (ft_strlen(str) < n || n < 0)
+		return (NULL);
+	if (ft_strlen(str) == n)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(str);
+	segment = (char *)ft_memalloc(len - n);
+	while (i != len - n)
+	{
+		segment[i] = str[i];
+		i++;
+	}
+	segment[i] = '\0';
+	return (segment);
 }

@@ -6,41 +6,51 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 09:28:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 20:25:25 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/12 21:01:14 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void		init(t_file *head, char **matr, t_flags *flags)
+int			is_onlyone_arg(t_file *head)
+{
+	t_file	*tmp;
+	int		counter;
+
+	counter = 0;
+	tmp = head;
+	while (tmp != NULL)
+	{
+		counter++;
+		tmp = tmp->next;
+	}
+	if (counter == 1)
+		return (1);
+	return (0);
+}
+
+void		init(t_file *head, char **argv, t_flags *flags)
 {
 	t_file	*tmp;
 	char	*new_path;
 	int 	i;
 
 	i = 0;
-	matr = argv_to_matrix((const char **)matr, head, flags); /* заполняет матрицу из argv, включая несуществующие файлы */
-	head = struct_filenames(&head, (const char **)matr, "./", flags);
-	// ft_putmatrix(matr);
-	matr = matrix_sort(head, matr, flags);
-	print_without_dir(head, (const char **)matr);
-	
-	while (matr[i] != NULL)
+	head = struct_filenames(&head, (const char **)argv, "./", flags);
+	sort_list(&head, flags);
+	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
+	tmp = head;
+	while (tmp != NULL)
 	{
-		if ((tmp = find_list(&head, matr[i])) == NULL) // функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список
+		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0)
 		{
-			i++;		/* такое возможно если в аргументы подали несуществующий файл */
-			continue ;
-		}
-		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
-		{
-			print_path(matr[i]);
+			if (is_onlyone_arg(head) != 1)
+				print_path(tmp->name);
 			new_path = get_path(tmp->name, tmp->path);
 			print_dir(new_path, flags);
 			ft_strdel(&new_path);
 		}
-		i++;		
+		tmp = tmp->next;
 	}
-	ft_matrixfree(&matr);
 	structfree(&head);
 }
