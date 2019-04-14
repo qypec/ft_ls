@@ -48,6 +48,8 @@ add_library(libft
         ft_strdel.c
         ft_strdup.c
         ft_strequ.c
+        ft_strencut.c
+        ft_strncut.c
         ft_striter.c
         ft_striteri.c
         ft_strjoin.c

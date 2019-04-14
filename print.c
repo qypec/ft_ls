@@ -44,6 +44,7 @@ void		print_dir(char *path, t_flags *flags)
 	head = NULL;
 	head = get_rootnames(&head, path, flags);
 	//sort
+	sort_list(&head, flags);
 	print_struct(&head, flags);
 	structfree(&head);
 }

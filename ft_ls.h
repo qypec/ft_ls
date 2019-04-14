@@ -76,5 +76,7 @@ void					bust(const char *file_name);
 void					usage(char c);
 
 void					structfree(t_file **head);
+void					asciiBubble(t_file **head);
+void					sort_list(t_file **head, t_flags *flags);
 
 #endif

@@ -15,7 +15,8 @@ add_executable(ft_ls
         rec_penetration.c
         struct_filenames.c
         whatsspecific.c
-        #struct_sort.c
+        struct_sort.c
+        free_func.c
         )
 add_subdirectory(libft)
 target_link_libraries(ft_ls libft)
