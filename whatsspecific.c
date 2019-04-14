@@ -29,6 +29,8 @@ char	*get_chmod(mode_t mode)
 		str[0] = 's';
 	else if (S_ISDIR(mode))
 		str[0] = 'd';
+	else if (S_ISLNK(mode))
+		str[0] = 'l';
 	str[1] = ((mode & S_IRUSR)) ? 'r' : '-';
 	str[2] = ((mode & S_IWUSR)) ? 'w' : '-';
 	str[3] = ((mode & S_IXUSR)) ? 'x' : '-';
@@ -90,6 +92,7 @@ int		whatsspecific(const char *str, t_file **new) // что насчет очи�
 		bust(str);
 		return (0);
 	}
+	(*new)->totalsize = buff.st_blocks;
 	pwd = getpwuid(buff.st_uid);
 	(*new)->chmod = get_chmod(buff.st_mode);
 	(*new)->numlink = buff.st_nlink;

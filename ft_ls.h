@@ -47,6 +47,7 @@ typedef struct			s_file
 	char				*year;
 	int					numlink;
 	char				*chmod;
+	long long int		totalsize;
 	struct s_file		*next;
 }						t_file;
 

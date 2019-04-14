@@ -86,8 +86,8 @@ void		print_struct(t_file **head, t_flags *flags)
 	if (flags->l == 1)
 	{
 		ft_putchar('\n');
-		ft_putendl("total");
-		//  число total
+		ft_putstr("total ");
+		ft_putendl(ft_itoa(tmp->totalsize));
 	}
 	while (tmp != NULL)
 	{
@@ -110,8 +110,8 @@ void		print_without_dir(t_file **head, t_flags *flags)
 	if (flags->l == 1 && tmp->type != T_DIR)
 	{
 		ft_putchar('\n');
-		ft_putendl("total");
-		//  число total
+		ft_putstr("total ");
+		ft_putendl(ft_itoa(tmp->totalsize));
 	}
 	while (tmp != NULL)
 	{
