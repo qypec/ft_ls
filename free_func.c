@@ -18,6 +18,10 @@ void	structfree(t_file **head)
 	{
 		ft_strdel(&(*head)->name);
 		ft_strdel(&(*head)->path);
+		ft_strdel(&(*head)->date);
+		ft_strdel(&(*head)->year);
+		ft_strdel(&(*head)->username);
+		ft_strdel(&(*head)->chmod);
 		structfree(&(*head)->next);
 	}
 	free(*head);

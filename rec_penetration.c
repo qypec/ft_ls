@@ -57,7 +57,7 @@ void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рек
 		print_path(path);
 	path_flag = 0;
 	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
-	// matr = matrix_sort(head, &matr, flags);
+	sort_list(&head, flags);
 	print_struct(&head, flags);
 	tmp = head;
 	while (tmp != NULL)
@@ -82,7 +82,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 
 	path_flag = 0;
 	head = struct_filenames(&head, argv, "./", flags);
-	// matr = matrix_sort(head, &matr, flags);
+	sort_list(&head, flags);
 	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
 	tmp = head;
 	while (tmp != NULL)

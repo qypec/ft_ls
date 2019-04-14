@@ -14,15 +14,22 @@
 
 void		print_l(t_file *tmp)
 {
+	char	*str1;
+	char	*str2;
+
 	ft_putstr(tmp->chmod);
 	ft_putstr("   ");
-	ft_putstr(ft_itoa(tmp->numlink)); // bla
+	str2 = ft_itoa(tmp->numlink);
+	ft_putstr(str2);
+	ft_strdel(&str2);
 	ft_putstr(" ");
 	ft_putstr(tmp->username);
 	ft_putstr("  ");
 	ft_putstr(tmp->year); // print year
 	ft_putstr("  ");
-	ft_putstr(ft_itoa(tmp->size));
+	str1 = ft_itoa(tmp->size);
+	ft_putstr(str1);
+	ft_strdel(&str1);
 	ft_putstr(" ");
 	ft_putstr(tmp->date); // print date
 	ft_putstr(" ");
@@ -35,7 +42,7 @@ void		print_dir(char *path, t_flags *flags)
 
 	head = NULL;
 	head = get_rootnames(&head, path, flags);
-	//sort
+	sort_list(&head, flags);
 	print_struct(&head, flags);
 	structfree(&head);
 }
@@ -76,6 +83,7 @@ void		print_path(const char *path)
 void		print_struct(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
+	char	*no_leaks;
 
 	tmp = *head;
 	if (*head == NULL)
@@ -85,9 +93,10 @@ void		print_struct(t_file **head, t_flags *flags)
 	}
 	if (flags->l == 1)
 	{
-		ft_putchar('\n');
-		ft_putstr("total ");
-		ft_putendl(ft_itoa(tmp->totalsize));
+		ft_putstr("\ntotal ");
+		no_leaks = ft_itoa(tmp->totalsize);
+		ft_putendl(no_leaks);
+		ft_strdel(&no_leaks);
 	}
 	while (tmp != NULL)
 	{

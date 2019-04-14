@@ -69,6 +69,8 @@ char					*get_path(char *name, char *path);
 int						whatsspecific(const char *str, t_file **new);
 void					push_back(t_file **head, t_file *new);
 
+void					sort_list(t_file **head, t_flags *flags);
+
 void					print_struct(t_file **head, t_flags *flags);
 void					print_dir(char *path, t_flags *flags);
 void					print_without_dir(t_file **head, t_flags *flags);

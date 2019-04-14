@@ -37,7 +37,7 @@ void		init(t_file *head, char **argv, t_flags *flags)
 
 	i = 0;
 	head = struct_filenames(&head, (const char **)argv, "./", flags);
-	// matr = matrix_sort(head, matr, flags);
+	sort_list(&head, flags);
 	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
 	tmp = head;
 	while (tmp != NULL)
@@ -52,5 +52,5 @@ void		init(t_file *head, char **argv, t_flags *flags)
 		}
 		tmp = tmp->next;
 	}
-	// очистить head
+	structfree(&head);
 }
