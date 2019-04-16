@@ -24,7 +24,7 @@ int			can_i_add_hidden_file(const char *str, t_flags *flags)
 	return (1);
 }
 
-t_file		*newlst(t_file	*new, const char *name, const char *path)
+t_file		*newlst(t_file	*new, const char *name, const char *path, t_flags *flags)
 {
 	int		type;
 	char	*full_name;
@@ -32,7 +32,7 @@ t_file		*newlst(t_file	*new, const char *name, const char *path)
 	if (!(new = malloc(sizeof(t_file))))
 		exit(1);
 	full_name = ft_strjoin(path, name); // чтобы использовать stat в функции whatstype
-	if (whatsspecific((const char *)full_name, &new) == 0) /* вернет 0, если файла не существует */
+	if (whatsspecific((const char *)full_name, &new, flags) == 0) /* вернет 0, если файла не существует */
 	{
 		ft_strdel(&full_name);
 		return (NULL);
@@ -62,7 +62,7 @@ t_file		*struct_filenames(t_file **head, const char **argv, const char *path, t_
 		// 	i++;
 		// 	continue ;
 		// }
-		if ((new = newlst(new, argv[i], (const char *)path)) == NULL)
+		if ((new = newlst(new, argv[i], (const char *)path, flags)) == NULL)
 		{
 			i++;
 			continue ;

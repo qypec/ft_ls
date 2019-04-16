@@ -29,7 +29,7 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	{
 		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
 			continue ;
-		new = newlst(new, entry->d_name, path); /* Никогда new != NULL, т.к. тут не может быть несуществующих файлов */
+		new = newlst(new, entry->d_name, path, flags); /* Никогда new != NULL, т.к. тут не может быть несуществующих файлов */
 		push_back(&(*head), new);
 	}
 	closedir(dir);

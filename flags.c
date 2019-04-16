@@ -14,10 +14,10 @@
 
 int			is_it_flag(const char *s)
 {
-	if(s && s[0] == '-' && s[1])
-		return(1);
+	if (s && s[0] == '-' && s[1])
+		return (1);
 	else
-		return(0);
+		return (0);
 }
 
 int			valid_flag(const char *s, char *v)
@@ -25,7 +25,7 @@ int			valid_flag(const char *s, char *v)
 	int i;
 	int j;
 	int f;
-	
+
 	i = 1;
 	if (s[1] == '-' && !s[2])
 		return (2);
@@ -52,7 +52,7 @@ int			putflag(const char *av, t_flags *flags)
 	int f;
 
 	i = 1;
-	f = valid_flag(av, "lRatr");
+	f = valid_flag(av, "lRatrufgd");
 	if (f == 2)
 		return (2);
 	if (f)
@@ -64,12 +64,21 @@ int			putflag(const char *av, t_flags *flags)
 			av[i] == 'a' ? flags->a = 1 : 0;
 			av[i] == 't' ? flags->t = 1 : 0;
 			av[i] == 'r' ? flags->r = 1 : 0;
+			av[i] == 'u' ? flags->u = 1 : 0;
+			av[i] == 'f' ? flags->f = 1 : 0;
+			av[i] == 'g' ? flags->g = 1 : 0;
+			av[i] == 'd' ? flags->d = 1 : 0;
 			i++;
 		}
 	}
 	return (1);
 }
-
+void 	disableFlags(t_flags *flags)
+{
+	flags->a = 1;
+	flags->r = 0;
+	flags->t = 0;
+}
 int			find_flags(const char **av, int ac, t_flags *flags)
 {
 	int		i;
@@ -89,5 +98,7 @@ int			find_flags(const char **av, int ac, t_flags *flags)
 		m == 2 ? f++ : 0;
 		i++;
 	}
+	if (flags->f == 1)
+		disableFlags(flags);
 	return (1);
 }

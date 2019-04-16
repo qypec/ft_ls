@@ -82,7 +82,7 @@ char	*get_date(long int seconds)
 	return (parse2);
 }
 
-int		whatsspecific(const char *str, t_file **new) // что насчет очистки buff? 
+int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что насчет очистки buff?
 {
 	struct stat		buff;
 	struct passwd	*pwd;
@@ -99,7 +99,8 @@ int		whatsspecific(const char *str, t_file **new) // что насчет очи�
 	(*new)->username = ft_strdup(pwd->pw_name);
 	(*new)->size = buff.st_size;
 	(*new)->modif = buff.st_mtime;
-	(*new)->date = get_date((*new)->modif);
+	(*new)->last_access = buff.st_atime;
+	(*new)->date = flags->u == 1 ? get_date((*new)->last_access) : get_date((*new)->modif);
 	(*new)->year = ft_strdup("2019");
 	if (S_ISREG(buff.st_mode))
 		(*new)->type = T_FILE;

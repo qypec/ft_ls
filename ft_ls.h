@@ -33,6 +33,10 @@ typedef	struct			s_flags
 	int					a; // show ".file" files
 	int					t; // sort by timestamp
 	int					r; // sort in reverse order
+	int					u; //OK use last access time in l and t;
+	int 				f; //OK turns off the -l, -t, -s, and -r flags, and turns on the -a flag.
+	int 				g; // display group name instead of username in l flag
+	int 				d; // display only specified directories
 }						t_flags;
 
 typedef struct			s_file
@@ -41,6 +45,7 @@ typedef struct			s_file
 	char				*path;
 	int					type;
 	long int			modif;
+	long int			last_access;
 	char				*date;
 	char				*username;
 	int					size;
@@ -64,9 +69,9 @@ void					init(t_file *head, char **argv, t_flags *flags);
 
 t_file					*struct_filenames(t_file **head, const char **argv, const char *path, t_flags *flags); /* создает список из argv */
 t_file					*get_rootnames(t_file **head, const char *path, t_flags *flags);
-t_file					*newlst(t_file	*new, const char *name, const char *path); /* выделение памяти, заполнение информацией элемента списка */
+t_file					*newlst(t_file	*new, const char *name, const char *path, t_flags *flags); /* выделение памяти, заполнение информацией элемента списка */
 char					*get_path(char *name, char *path);
-int						whatsspecific(const char *str, t_file **new);
+int						whatsspecific(const char *str, t_file **new, t_flags *flags);
 void					push_back(t_file **head, t_file *new);
 
 void					sort_list(t_file **head, t_flags *flags);
