@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 16:49:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/16 15:10:19 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ t_file		*struct_filenames(t_file **head, const char **argv, const char *path, t_
 			i++;
 			continue ;
 		}
-		if (can_i_add_hidden_file(argv[i], flags) == 0)
-		{
-			i++;
-			continue ;
-		}
+		// if (can_i_add_hidden_file(argv[i], flags) == 0)
+		// {
+		// 	i++;
+		// 	continue ;
+		// }
 		if ((new = newlst(new, argv[i], (const char *)path)) == NULL)
 		{
 			i++;

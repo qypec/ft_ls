@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 21:00:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/16 15:10:59 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	dir = opendir(path);
 	if (!dir)
 	{
-		perror("diropen");
-		exit(1);
+		perror("\ndiropen");
+		// exit(1);
+		return (NULL);
 	}
 	while ((entry = readdir(dir)) != NULL)
 	{
@@ -62,7 +63,7 @@ void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рек
 	tmp = head;
 	while (tmp != NULL)
 	{
-		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
+		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
 			rec_penetration((const char *)new_path, flags, 0);
@@ -87,7 +88,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 	tmp = head;
 	while (tmp != NULL)
 	{
-		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0 && ft_strcmp(tmp->name, ".git") != 0) // если лист - папка 
+		if (tmp->type == T_DIR) // если лист - папка 
 		{
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
 			path_flag = is_onlyone_arg(head);

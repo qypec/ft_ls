@@ -12,6 +12,23 @@
 
 #include "ft_ls.h"
 
+<<<<<<< HEAD
+=======
+// int			are_dots_in_argv(char **argv)
+// {
+// 	int	i;
+// 	int	counter;
+	
+// 	i = 0;
+// 	counter = 0;
+// 	while (argv[i] != NULL)
+// 	{
+// 		if (ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0)
+
+// 	}
+// }
+
+>>>>>>> 235d3c0dddcd4b2d2cc532fd5163c2bf3a4ae3fe
 int			is_onlyone_arg(t_file *head)
 {
 	t_file	*tmp;
@@ -42,7 +59,11 @@ void		init(t_file *head, char **argv, t_flags *flags)
 	tmp = head;
 	while (tmp != NULL)
 	{
+<<<<<<< HEAD
 		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0)
+=======
+		if (tmp->type == T_DIR)
+>>>>>>> 235d3c0dddcd4b2d2cc532fd5163c2bf3a4ae3fe
 		{
 			if (is_onlyone_arg(head) != 1)
 				print_path(tmp->name);
