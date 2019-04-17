@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 21:42:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/17 20:28:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,6 @@ char	*get_chmod(mode_t mode)
 	str[10] = '\0';
 	return (str);
 }
-// char	*get_year(long int seconds)
-// {
-// 	char	*str;
-// 	char	*year;
-// 	int		i;
-// 	int		j;
-// 	int		len;
-
-// 	str = ctime(&seconds);
-// 		printf("time = %s\n", str);
-// 	year = (char *)ft_memalloc(5);
-// 	i = ft_strlen(str);
-// 	while (str[i] != ' ')
-// 		i++;
-// 	printf("i = %d\n", i);
-// 	return (year);
-// }
 
 char	*get_date(long int seconds)
 {
@@ -85,6 +68,7 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 {
 	struct stat		buff;
 	struct passwd	*pwd;
+	struct group	*grp;
 
 	if (lstat(str, &buff) < 0) // потом надо изменить на lstat
 	{
@@ -100,7 +84,8 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	(*new)->modif = buff.st_mtime;
 	(*new)->last_access = buff.st_atime;
 	(*new)->date = flags->u == 1 ? get_date((*new)->last_access) : get_date((*new)->modif);
-	(*new)->year = ft_strdup("2019");
+	grp = getgrgid(buff.st_gid);
+	(*new)->groupname = ft_strdup(grp->gr_name);
 	if (S_ISREG(buff.st_mode))
 		(*new)->type = T_FILE;
     else if (S_ISDIR(buff.st_mode)) 

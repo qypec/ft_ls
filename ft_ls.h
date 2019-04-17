@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 17:33:08 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:28:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include <pwd.h>
+#include <grp.h>
 # include <time.h>
 
 # define T_FILE	1
@@ -48,7 +49,7 @@ typedef struct			s_file
 	char				*date;
 	char				*username;
 	int					size;
-	char				*year;
+	char				*groupname;
 	int					numlink;
 	char				*chmod;
 	long long int		totalsize;

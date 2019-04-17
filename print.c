@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 17:38:56 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:25:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		print_l(t_file *tmp)
 	ft_putstr(" ");
 	ft_putstr(tmp->username);
 	ft_putstr("  ");
-	ft_putstr(tmp->year); // print year
+	ft_putstr(tmp->groupname); // print year
 	ft_putstr("  ");
 	str1 = ft_itoa(tmp->size);
 	ft_putstr(str1);

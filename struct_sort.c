@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wconnell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/17 19:09:52 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 20:27:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	content_cpy(t_file *src, t_file *tmp)
 	tmp->date = src->date;
 	tmp->username = src->username;
 	tmp->size = src->size;
-	tmp->year = src->year;
+	tmp->groupname = src->groupname;
 	tmp->numlink = src->numlink;
 	tmp->chmod = src->chmod;
 	tmp->totalsize = src->totalsize;
