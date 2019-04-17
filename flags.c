@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:33:38 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/12 16:06:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/17 17:19:33 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int			is_it_flag(const char *s)
 
 int			valid_flag(const char *s, char *v)
 {
-	int i;
-	int j;
-	int f;
+	int		i;
+	int		j;
+	int		f;
 
 	i = 1;
 	if (s[1] == '-' && !s[2])
@@ -48,8 +48,8 @@ int			valid_flag(const char *s, char *v)
 
 int			putflag(const char *av, t_flags *flags)
 {
-	int i;
-	int f;
+	int		i;
+	int		f;
 
 	i = 1;
 	f = valid_flag(av, "lRatrufgd");
@@ -73,12 +73,14 @@ int			putflag(const char *av, t_flags *flags)
 	}
 	return (1);
 }
-void 	disableFlags(t_flags *flags)
+
+void		disable_flags(t_flags *flags)
 {
 	flags->a = 1;
 	flags->r = 0;
 	flags->t = 0;
 }
+
 int			find_flags(const char **av, int ac, t_flags *flags)
 {
 	int		i;
@@ -99,6 +101,6 @@ int			find_flags(const char **av, int ac, t_flags *flags)
 		i++;
 	}
 	if (flags->f == 1)
-		disableFlags(flags);
+		disable_flags(flags);
 	return (1);
 }

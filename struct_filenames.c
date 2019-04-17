@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/16 15:10:19 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:42:32 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			can_i_add_hidden_file(const char *str, t_flags *flags)
 	return (1);
 }
 
-t_file		*newlst(t_file	*new, const char *name, const char *path, t_flags *flags)
+t_file		*newlst(t_file *new, const char *name, const char *path, t_flags *flags)
 {
 	int		type;
 	char	*full_name;
@@ -57,11 +57,6 @@ t_file		*struct_filenames(t_file **head, const char **argv, const char *path, t_
 			i++;
 			continue ;
 		}
-		// if (can_i_add_hidden_file(argv[i], flags) == 0)
-		// {
-		// 	i++;
-		// 	continue ;
-		// }
 		if ((new = newlst(new, argv[i], (const char *)path, flags)) == NULL)
 		{
 			i++;

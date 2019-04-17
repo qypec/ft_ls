@@ -6,22 +6,21 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 20:28:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/17 17:32:32 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
-
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
-#include <stdlib.h>
-#include "libft/libft.h"
-#include <pwd.h>
-#include <time.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <dirent.h>
+# include <stdlib.h>
+# include "libft/libft.h"
+# include <pwd.h>
+# include <time.h>
 
 # define T_FILE	1
 # define T_DIR	2

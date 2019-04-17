@@ -14,7 +14,7 @@
 
 char	*get_chmod(mode_t mode)
 {
-	char *str;
+	char	*str;
 
 	str = (char *)ft_memalloc(10);
 	if (S_ISFIFO(mode))
@@ -51,6 +51,26 @@ char	*get_chmod(mode_t mode)
 	return (str);
 }
 
+int 	absolute_path(const char *argv)
+{
+	if (argv[0] == '/')
+			return (1);
+	return (0);
+}
+
+const char 	*init_path(const char **argv)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while(argv[i] != NULL)
+	{
+		i++;
+	}
+	return (argv[i]);
+}
 // char	*get_year(long int seconds)
 // {
 // 	char	*str;

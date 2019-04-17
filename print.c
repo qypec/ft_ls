@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 21:28:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/17 17:38:56 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void		print_path(const char *path)
 	int	len;
 
 	i = 0;
-	len = 0;
-	// ft_putchar('\n');
 	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
 		return ;
 	if (path[0] == '.' && path[1] == '/')
@@ -77,7 +75,7 @@ void		print_path(const char *path)
 		}
 	}
 	ft_putchar(':');
-	// ft_putchar('\n');
+	ft_putchar('\n');
 }
 
 void		print_struct(t_file **head, t_flags *flags)
@@ -112,9 +110,7 @@ void		print_struct(t_file **head, t_flags *flags)
 void		print_without_dir(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
-	int		i;
 
-	i = 0;
 	tmp = *head;
 	if (flags->l == 1 && tmp->type != T_DIR)
 	{
@@ -135,8 +131,3 @@ void		print_without_dir(t_file **head, t_flags *flags)
 	}
 	ft_putchar('\n');
 }
-
-// void		print(t_file *head, char **matr, t_flags *flags)
-// {
-// 	ft_putmatrix(matr); // пока так
-// }

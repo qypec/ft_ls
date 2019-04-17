@@ -73,6 +73,3 @@ int				main(int argc, char **argv)
 	// printf("a = %d\n", flags.a);
 	// printf("t = %d\n", flags.t);
 	// printf("r = %d\n", flags.r);
-
-// нужно прикручивать возможность передачи файлов по пути ./ft_ls libft author authra libft/afaf - сейчас не выводит последнюю, так как find_list ее не находит.
-// ./ft_ls -R tmp

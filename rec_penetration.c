@@ -82,7 +82,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 	int		path_flag;
 
 	path_flag = 0;
-	head = struct_filenames(&head, argv, "./", flags);
+	head = struct_filenames(&head, (const char **)argv, "", flags);
 	sort_list(&head, flags);
 	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
 	tmp = head;
@@ -90,6 +90,7 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 	{
 		if (tmp->type == T_DIR) // если лист - папка 
 		{
+//			new_path = *tmp->name == '/' && *tmp->path == '/' ? ft_strdup("/") : get_path(tmp->name, tmp->path);
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
 			path_flag = is_onlyone_arg(head);
 			rec_penetration((const char *)new_path, flags, path_flag);

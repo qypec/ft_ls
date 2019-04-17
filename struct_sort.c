@@ -6,7 +6,7 @@
 /*   By: wconnell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/12 17:20:15 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:47:27 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ft_lstswap(t_file *p1, t_file *p2)
 	content_cpy(&tmp, p2);
 }
 
-void	asciiBubble(t_file **head)
+void	ascii_bubble(t_file **head, int n)
 {
 	t_file		*h;
 	t_file		*p1;
 	t_file		*p2;
-	int 		f;
+	int			f;
 
 	f = 1;
 	while (f)
@@ -53,7 +53,8 @@ void	asciiBubble(t_file **head)
 		{
 			p1 = h;
 			p2 = h->next;
-			if (ft_strcmp(p1->name, p2->name) > 0)
+			if (n == 1 ? ft_strcmp(p1->name, p2->name) > 0 : \
+			ft_strcmp(p1->name, p2->name) < 0)
 			{
 				ft_lstswap(p1, p2);
 				f++;
@@ -62,12 +63,13 @@ void	asciiBubble(t_file **head)
 		}
 	}
 }
-void	timeBubble(t_file **head)
+
+void	time_bubble(t_file **head, int n)
 {
 	t_file		*h;
 	t_file		*p1;
 	t_file		*p2;
-	int 		f;
+	int			f;
 
 	f = 1;
 	while (f)
@@ -78,7 +80,7 @@ void	timeBubble(t_file **head)
 		{
 			p1 = h;
 			p2 = h->next;
-			if (p1->modif < p2->modif)
+			if (n == 1 ? p1->modif < p2->modif : p1->modif > p2->modif)
 			{
 				ft_lstswap(p1, p2);
 				f++;
@@ -87,12 +89,13 @@ void	timeBubble(t_file **head)
 		}
 	}
 }
-void	revBubble(t_file **head)
+
+void	atime_bubble(t_file **head, int n)
 {
 	t_file		*h;
 	t_file		*p1;
 	t_file		*p2;
-	int 		f;
+	int			f;
 
 	f = 1;
 	while (f)
@@ -103,7 +106,8 @@ void	revBubble(t_file **head)
 		{
 			p1 = h;
 			p2 = h->next;
-			if (ft_strcmp(p1->name, p2->name) < 0)
+			if (n == 1 ? p1->last_access < p2->last_access : \
+			p1->last_access > p2->last_access)
 			{
 				ft_lstswap(p1, p2);
 				f++;
@@ -112,44 +116,21 @@ void	revBubble(t_file **head)
 		}
 	}
 }
-void    atimeBubble(t_file **head)
-{
-    t_file		*h;
-    t_file		*p1;
-    t_file		*p2;
-    int 		f;
 
-    f = 1;
-    while (f)
-    {
-        h = *head;
-        f = 0;
-        while (h->next != NULL)
-        {
-            p1 = h;
-            p2 = h->next;
-            if (p1->last_access < p2->last_access)
-            {
-                ft_lstswap(p1, p2);
-                f++;
-            }
-            h = h->next;
-        }
-    }
-}
 void	sort_list(t_file **head, t_flags *flags)
 {
 	if (*head != NULL)
 	{
-		asciiBubble(head);
 		if (flags->t == 1)
 		{
 			if (flags->u == 1)
-				atimeBubble(head);
+				flags->r == 1 ? atime_bubble(head, 0) : atime_bubble(head, 1);
 			else
-				timeBubble(head);
+				flags->r == 1 ? time_bubble(head, 0) : time_bubble(head, 1);
 		}
-		if (flags->r == 1)
-			revBubble(head);
+		else
+		{
+			flags->r == 1 ? ascii_bubble(head, 0) : ascii_bubble(head, 1);
+		}
 	}
 }
