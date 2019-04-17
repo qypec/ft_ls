@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:26:40 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 17:42:32 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:42:53 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int			can_i_add_hidden_file(const char *str, t_flags *flags)
 
 t_file		*newlst(t_file *new, const char *name, const char *path, t_flags *flags)
 {
-	int		type;
 	char	*full_name;
 
 	if (!(new = malloc(sizeof(t_file))))

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/16 15:10:59 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:16:21 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 	{
 		if (tmp->type == T_DIR) // если лист - папка 
 		{
-//			new_path = *tmp->name == '/' && *tmp->path == '/' ? ft_strdup("/") : get_path(tmp->name, tmp->path);
 			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
 			path_flag = is_onlyone_arg(head);
 			rec_penetration((const char *)new_path, flags, path_flag);

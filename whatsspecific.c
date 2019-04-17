@@ -50,27 +50,6 @@ char	*get_chmod(mode_t mode)
 	str[10] = '\0';
 	return (str);
 }
-
-int 	absolute_path(const char *argv)
-{
-	if (argv[0] == '/')
-			return (1);
-	return (0);
-}
-
-const char 	*init_path(const char **argv)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while(argv[i] != NULL)
-	{
-		i++;
-	}
-	return (argv[i]);
-}
 // char	*get_year(long int seconds)
 // {
 // 	char	*str;
@@ -107,7 +86,7 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	struct stat		buff;
 	struct passwd	*pwd;
 
-	if (stat(str, &buff) < 0) // потом надо изменить на lstat
+	if (lstat(str, &buff) < 0) // потом надо изменить на lstat
 	{
 		bust(str);
 		return (0);

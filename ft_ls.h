@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 17:32:32 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:33:08 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct			s_file
 	char				*name;
 	char				*path;
 	int					type;
-	long int			modif;
-	long int			last_access;
+	long long int		modif;
+	long long int		last_access;
 	char				*date;
 	char				*username;
 	int					size;
