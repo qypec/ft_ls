@@ -27,7 +27,7 @@ void		print_path(const char *path)
 {
 	int i;
 	int	len;
-
+	
 	i = 0;
 	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
 		return ;
