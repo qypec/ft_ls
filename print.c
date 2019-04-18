@@ -6,35 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 20:25:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 17:19:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void		print_l(t_file *tmp)
-{
-	char	*str1;
-	char	*str2;
-
-	ft_putstr(tmp->chmod);
-	ft_putstr("   ");
-	str2 = ft_itoa(tmp->numlink);
-	ft_putstr(str2);
-	ft_strdel(&str2);
-	ft_putstr(" ");
-	ft_putstr(tmp->username);
-	ft_putstr("  ");
-	ft_putstr(tmp->groupname); // print year
-	ft_putstr("  ");
-	str1 = ft_itoa(tmp->size);
-	ft_putstr(str1);
-	ft_strdel(&str1);
-	ft_putstr(" ");
-	ft_putstr(tmp->date); // print date
-	ft_putstr(" ");
-	ft_putendl(tmp->name);
-}
 
 void		print_dir(char *path, t_flags *flags)
 {
@@ -90,19 +66,14 @@ void		print_struct(t_file **head, t_flags *flags)
 		return ;
 	}
 	if (flags->l == 1)
+		print_l(head);
+	else
 	{
-		ft_putstr("\ntotal ");
-		no_leaks = ft_itoa(tmp->totalsize);
-		ft_putendl(no_leaks);
-		ft_strdel(&no_leaks);
-	}
-	while (tmp != NULL)
-	{
-		if (flags->l == 1)
-			print_l(tmp);
-		else
+		while (tmp != NULL)
+		{
 			ft_putendl(tmp->name);
-		tmp = tmp->next;
+			tmp = tmp->next;
+		}
 	}
 	ft_putchar('\n');
 }
@@ -112,21 +83,10 @@ void		print_without_dir(t_file **head, t_flags *flags)
 	t_file	*tmp;
 
 	tmp = *head;
-	if (flags->l == 1 && tmp->type != T_DIR)
-	{
-		ft_putchar('\n');
-		ft_putstr("total ");
-		ft_putendl(ft_itoa(tmp->totalsize));
-	}
 	while (tmp != NULL)
 	{
 		if (tmp->type != T_DIR)
-		{
-			if (flags->l == 1)
-				print_l(tmp);
-			else
-				ft_putendl(tmp->name);
-		}
+			ft_putendl(tmp->name);
 		tmp = tmp->next;
 	}
 	ft_putchar('\n');

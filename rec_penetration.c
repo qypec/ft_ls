@@ -22,7 +22,6 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	if (!dir)
 	{
 		perror("\ndiropen");
-		// exit(1);
 		return (NULL);
 	}
 	while ((entry = readdir(dir)) != NULL)

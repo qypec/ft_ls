@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 19:55:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 17:52:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ char				**ft_strswap(char **matrix, int first, int second);
 void				ft_putmatrix(char **str);
 char				*ft_strncut(char *str, int n);
 char				*ft_strencut(char *str, int n);
+char				*ft_addsymb(char *str, char c, int num);
+char				*ft_addsymbend(char *str, char c, int num);
 
 #endif

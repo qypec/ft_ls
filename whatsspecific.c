@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 20:28:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 18:00:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	struct stat		buff;
 	struct passwd	*pwd;
 	struct group	*grp;
+	char			*no_leaksstr;
 
 	if (lstat(str, &buff) < 0) // потом надо изменить на lstat
 	{
@@ -78,9 +79,13 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	(*new)->totalsize = buff.st_blocks;
 	pwd = getpwuid(buff.st_uid);
 	(*new)->chmod = get_chmod(buff.st_mode);
-	(*new)->numlink = buff.st_nlink;
+	no_leaksstr = ft_itoa(buff.st_nlink);
+	(*new)->numlink = ft_strdup(no_leaksstr);
+	ft_strdel(&no_leaksstr);
 	(*new)->username = ft_strdup(pwd->pw_name);
-	(*new)->size = buff.st_size;
+	no_leaksstr = ft_itoa(buff.st_size);
+	(*new)->size = ft_strdup(no_leaksstr);
+	ft_strdel(&no_leaksstr);
 	(*new)->modif = buff.st_mtime;
 	(*new)->last_access = buff.st_atime;
 	(*new)->date = flags->u == 1 ? get_date((*new)->last_access) : get_date((*new)->modif);

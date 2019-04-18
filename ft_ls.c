@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/12 21:35:45 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 17:15:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,6 @@ int				main(int argc, char **argv)
 	}
 	else
 		print_dir("./", &flags);
-	// printf("\nexit!");
-	// else
-	// 	conclusion_without_flags(".");
 	// free(flags); // ??
 }
 
