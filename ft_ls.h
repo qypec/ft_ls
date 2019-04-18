@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 17:59:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 20:44:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct			s_file
 	char				*date;
 	char				*username;
 	char				*size;
+	int					filesize;
 	char				*groupname;
 	char				*numlink;
 	char				*chmod;
@@ -81,6 +82,7 @@ void					print_dir(char *path, t_flags *flags);
 void					print_without_dir(t_file **head, t_flags *flags);
 void					print_path(const char *path);
 void					print_l(t_file **head);
+void					print_total(t_file **head);
 
 void					bust(const char *file_name);
 void					usage(char c);

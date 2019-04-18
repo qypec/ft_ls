@@ -76,13 +76,13 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 		bust(str);
 		return (0);
 	}
-	(*new)->totalsize = buff.st_blocks;
 	pwd = getpwuid(buff.st_uid);
 	(*new)->chmod = get_chmod(buff.st_mode);
 	no_leaksstr = ft_itoa(buff.st_nlink);
 	(*new)->numlink = ft_strdup(no_leaksstr);
 	ft_strdel(&no_leaksstr);
 	(*new)->username = ft_strdup(pwd->pw_name);
+	(*new)->filesize = buff.st_size;
 	no_leaksstr = ft_itoa(buff.st_size);
 	(*new)->size = ft_strdup(no_leaksstr);
 	ft_strdel(&no_leaksstr);

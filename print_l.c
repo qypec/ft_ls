@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 15:44:23 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 18:04:45 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 20:44:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,31 +115,14 @@ t_file		*restruct_numlink(t_file **head)
 void		print_l(t_file **head)
 {
 	t_file	*tmp;
-	char	*str1;
-	char	*str2;
+	char	*total;
 
 	tmp = *head;
-	// printf("before\n");
-	// while (tmp != NULL)
-	// {
-	// 	printf("name: %s\n", tmp->name);
-	// 	printf("size: |%s|\n\n", tmp->size);
-	// 	tmp = tmp->next;
-	// }
-
 	*head = restruct_numlink(head);
 	*head = restruct_username(head);
 	*head = restruct_groupname(head);
 	*head = restruct_size(head);
-
-	// printf("after\n");
-	// while (*head != NULL)
-	// {
-	// 	printf("name: %s\n", (*head)->name);
-	// 	printf("size: |%s|\n\n", (*head)->size);
-	// 	(*head) = (*head)->next;
-	// }
-
+	print_total(head);
 	while (tmp != NULL)
 	{
 		ft_putstr(tmp->chmod);
@@ -157,18 +140,4 @@ void		print_l(t_file **head)
 		ft_putendl(tmp->name);
 		tmp = tmp->next;
 	}
-	// ft_putstr(str2);
-	// ft_strdel(&str2);
-	// ft_putstr(" ");
-	// ft_putstr(tmp->username);
-	// ft_putstr("  ");
-	// ft_putstr(tmp->groupname); // print year
-	// ft_putstr("  ");
-	// str1 = ft_itoa(tmp->size);
-	// ft_putstr(str1);
-	// ft_strdel(&str1);
-	// ft_putstr(" ");
-	// ft_putstr(tmp->date); // print date
-	// ft_putstr(" ");
-	// ft_putendl(tmp->name);
 }
