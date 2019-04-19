@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/19 18:31:49 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:08:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_date(long int seconds)
 
 	nowtime = time(NULL);
 	str = ctime(&seconds);
-	if (nowtime - seconds > 2592000) /* фича с выводом только года в некоторых случая ls -l */
+	if (nowtime - seconds > 2592000 || nowtime - seconds < -3600) /* фича с выводом только года в некоторых случая ls -l */
 	{
 		parse1 = ft_strncut(str, 4, "second");
 		tmp_year = ft_strencut(str, 5, "second");
