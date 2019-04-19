@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 17:15:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/18 21:18:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static int		only_flags(const char **argv) // определяет только ли флаги в argv
+static int		only_flags(const char **argv) /* определяет только ли флаги в argv */
 {
 	int i;
 
@@ -55,7 +55,6 @@ int				main(int argc, char **argv)
 	}
 	else
 		print_dir("./", &flags);
-	// free(flags); // ??
 }
 
 	// while (head != NULL)

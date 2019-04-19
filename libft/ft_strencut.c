@@ -6,13 +6,50 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 19:52:49 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/13 20:24:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 18:18:16 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strencut(char *str, int n)
+static char		*second(char *str, int n)
+{
+	char 	*segment;
+	int		i;
+	int		j;
+
+	j = ft_strlen(str) - (n + 1);
+	i = 0;
+	segment = (char *)ft_memalloc(n);
+	while (i < n)
+	{
+		segment[i] = str[j];
+		j++;
+		i++;
+	}
+	segment[i] = '\0';
+	return (segment);
+}
+
+static char		*first(char *str, int n)
+{
+	char 	*segment;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(str);
+	segment = (char *)ft_memalloc(len - n);
+	while (i < len - n)
+	{
+		segment[i] = str[i];
+		i++;
+	}
+	segment[i] = '\0';
+	return (segment);
+}
+
+char			*ft_strencut(char *str, int n, char *choice)
 {
 	char	*segment;
 	int		i;
@@ -24,14 +61,9 @@ char	*ft_strencut(char *str, int n)
 		return (NULL);
 	if (ft_strlen(str) == n)
 		return (NULL);
-	i = 0;
-	len = ft_strlen(str);
-	segment = (char *)ft_memalloc(len - n);
-	while (i != len - n)
-	{
-		segment[i] = str[i];
-		i++;
-	}
-	segment[i] = '\0';
-	return (segment);
+	if (ft_strcmp(choice, "first") == 0)
+		return (first(str, n));
+	else if (ft_strcmp(choice, "second") == 0)
+		return (second(str, n));
+	return (NULL);
 }

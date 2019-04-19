@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 18:00:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 18:31:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,33 @@ char	*get_chmod(mode_t mode)
 
 char	*get_date(long int seconds)
 {
-	char	*str;
-	char	*parse1;
-	char	*parse2;
+	long int	nowtime;
+	char		*str;
+	char		*parse1;
+	char		*parse2;
+	char		*tmp_year;
+	char		*tmp;
 
+	nowtime = time(NULL);
 	str = ctime(&seconds);
-	parse1 = ft_strncut(str, 4);
-	parse2 = ft_strencut(parse1, 9);
-	ft_strdel(&parse1);
-	return (parse2);
+	if (nowtime - seconds > 2592000) /* фича с выводом только года в некоторых случая ls -l */
+	{
+		parse1 = ft_strncut(str, 4, "second");
+		tmp_year = ft_strencut(str, 5, "second");
+		parse2 = ft_strencut(parse1, 14, "first");
+		tmp = ft_strjoin(parse2, tmp_year);
+		ft_strdel(&parse2);
+		ft_strdel(&tmp_year);
+		ft_strdel(&parse1);
+		return (tmp);
+	}
+	else
+	{
+		parse1 = ft_strncut(str, 4, "second");
+		parse2 = ft_strencut(parse1, 9, "first");
+		ft_strdel(&parse1);
+		return (parse2);
+	}
 }
 
 int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что насчет очистки buff?
