@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/17 17:16:21 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/19 20:43:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рек
 	path_flag = 0;
 	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
 	sort_list(&head, flags);
-	print_struct(&head, flags);
+	print_struct(&head, flags, (char *)path);
 	tmp = head;
 	while (tmp != NULL)
 	{

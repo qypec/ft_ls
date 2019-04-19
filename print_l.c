@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 15:44:23 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 20:44:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 20:49:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,12 @@ t_file		*restruct_numlink(t_file **head)
 	return (*head);
 }
 
-void		print_l(t_file **head)
+void		print_l(t_file **head, char *path)
 {
 	t_file	*tmp;
 	char	*total;
+	char	buff[NAME_MAX + 1];
+	char	*tmpstr;
 
 	tmp = *head;
 	*head = restruct_numlink(head);
@@ -137,7 +139,18 @@ void		print_l(t_file **head)
 		ft_putstr(" ");
 		ft_putstr(tmp->date);
 		ft_putstr(" ");
-		ft_putendl(tmp->name);
+		ft_putstr(tmp->name);
+		if (tmp->type == T_SYMBLINK)
+		{
+			ft_bzero(buff, NAME_MAX + 1);
+			tmpstr = ft_strjoin(tmp->path, tmp->name);
+			readlink(tmpstr, buff, NAME_MAX);
+			ft_strdel(&tmpstr);
+			ft_putstr(" -> ");
+			ft_putendl(buff);
+		}
+		else
+			ft_putchar('\n');
 		tmp = tmp->next;
 	}
 }

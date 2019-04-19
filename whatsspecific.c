@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/19 19:08:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 20:43:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 		(*new)->type = T_FILE;
     else if (S_ISDIR(buff.st_mode)) 
     	(*new)->type = T_DIR;
+    else if (S_ISLNK(buff.st_mode))
+    	(*new)->type = T_SYMBLINK;
     return (1);
 }

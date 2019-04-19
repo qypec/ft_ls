@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 21:11:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/19 19:58:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 # include <pwd.h>
-#include <grp.h>
+# include <grp.h>
 # include <time.h>
+# include <limits.h>
 
-# define T_FILE	1
-# define T_DIR	2
+# define T_FILE		1
+# define T_DIR		2
+# define T_SYMBLINK	3
 
 typedef	struct			s_flags
 {
@@ -77,11 +79,11 @@ void					push_back(t_file **head, t_file *new);
 
 void					sort_list(t_file **head, t_flags *flags);
 
-void					print_struct(t_file **head, t_flags *flags);
+void					print_struct(t_file **head, t_flags *flags, char *path);
 void					print_dir(char *path, t_flags *flags);
 void					print_without_dir(t_file **head, t_flags *flags);
 void					print_path(const char *path);
-void					print_l(t_file **head);
+void					print_l(t_file **head, char *path);
 void					print_total(t_file **head);
 
 void					bust(const char *file_name);

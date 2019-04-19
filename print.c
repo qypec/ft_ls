@@ -19,7 +19,7 @@ void		print_dir(char *path, t_flags *flags)
 	head = NULL;
 	head = get_rootnames(&head, path, flags);
 	sort_list(&head, flags);
-	print_struct(&head, flags);
+	print_struct(&head, flags, path);
 	structfree(&head);
 }
 
@@ -54,7 +54,7 @@ void		print_path(const char *path)
 	ft_putchar('\n');
 }
 
-void		print_struct(t_file **head, t_flags *flags)
+void		print_struct(t_file **head, t_flags *flags, char *path)
 {
 	t_file	*tmp;
 	char	*no_leaks;
@@ -66,7 +66,7 @@ void		print_struct(t_file **head, t_flags *flags)
 		return ;
 	}
 	if (flags->l == 1)
-		print_l(head);
+		print_l(head, path);
 	else
 	{
 		while (tmp != NULL)
