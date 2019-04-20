@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 18:51:04 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:24:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_date(long int seconds)
 		tmp = ft_strjoin(parse2, tmp_year);
 		ft_strdel(&parse2);
 		ft_strdel(&tmp_year);
-		ft_strdel(&parse1);
+		ft_strdel(&parse1) b               ;
 		return (tmp);
 	}
 	else
@@ -97,10 +97,10 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags)
 	pwd = getpwuid(buff.st_uid);
 	(*new)->chmod = get_chmod(buff.st_mode);
 	no_leaksstr = ft_itoa(buff.st_nlink);
+	(*new)->blocks = buff.st_blocks;
 	(*new)->numlink = ft_strdup(no_leaksstr);
 	ft_strdel(&no_leaksstr);
 	(*new)->username = ft_strdup(pwd->pw_name);
-	(*new)->filesize = buff.st_size;
 	no_leaksstr = ft_itoa(buff.st_size);
 	(*new)->size = ft_strdup(no_leaksstr);
 	ft_strdel(&no_leaksstr);

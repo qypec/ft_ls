@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 18:38:21 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:25:27 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ typedef struct			s_file
 	char				*groupname;
 	char				*chmod;
 	char				*size;
-	int					filesize;
 	char				*numlink;
-	long long int		totalsize;
+	long long int		blocks;
 	struct s_file		*next;
 }						t_file;
 
