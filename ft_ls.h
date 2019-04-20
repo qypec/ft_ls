@@ -6,11 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 15:20:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
-.fr       */
-=======
-/*   Updated: 2019/04/20 16:21:05 by wconnell         ###   ########.fr       */
->>>>>>> arseny2
+/*   Updated: 2019/04/20 18:22:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +55,7 @@ typedef struct			s_file
 	char				*size;
 	int					filesize;
 	char				*numlink;
-	long long int		totalsize;
+	long long int		blocks;
 	struct s_file		*next;
 }						t_file;
 

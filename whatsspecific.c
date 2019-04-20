@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:22:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	pwd = getpwuid(buff.st_uid);
 	(*new)->chmod = get_chmod(buff.st_mode);
 	no_leaksstr = ft_itoa(buff.st_nlink);
+	(*new)->blocks = buff.st_blocks;
 	(*new)->numlink = ft_strdup(no_leaksstr);
 	ft_strdel(&no_leaksstr);
 	(*new)->username = ft_strdup(pwd->pw_name);

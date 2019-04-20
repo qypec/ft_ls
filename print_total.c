@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 20:29:13 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/18 20:45:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 18:23:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*calculate_total(t_file **head)
 	total = 0;
 	while (tmp != NULL)
 	{
-		total += tmp->filesize / 512;
+		total += tmp->blocks;
 		tmp = tmp->next;
 	}
 	return (ft_itoa(total));

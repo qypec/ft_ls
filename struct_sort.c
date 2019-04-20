@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:23:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	content_cpy(t_file *src, t_file *tmp)
 	tmp->groupname = src->groupname;
 	tmp->numlink = src->numlink;
 	tmp->chmod = src->chmod;
-	tmp->totalsize = src->totalsize;
+	tmp->blocks = src->blocks;
 }
 
 void	ft_lstswap(t_file *p1, t_file *p2)
@@ -128,8 +128,6 @@ int 	ft_lstlen(t_file *head, int n)
 
 void	sort_list(t_file **head, t_flags *flags)
 {
-
-	printf("list size = %d\n", ft_lstlen(*head, 0));
 	if (*head != NULL)
 	{
 		flags->r == 1 ? ascii_bubble(head, 0) : ascii_bubble(head, 1);
