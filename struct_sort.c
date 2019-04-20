@@ -6,31 +6,12 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/20 18:46:04 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 19:29:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-<<<<<<< HEAD
-=======
-void	content_cpy(t_file *src, t_file *tmp)
-{
-	tmp->name = src->name;
-	tmp->path = src->path;
-	tmp->type = src->type;
-	tmp->modif = src->modif;
-	tmp->last_access = src->last_access;
-	tmp->date = src->date;
-	tmp->username = src->username;
-	tmp->size = src->size;
-	tmp->groupname = src->groupname;
-	tmp->numlink = src->numlink;
-	tmp->chmod = src->chmod;
-	tmp->blocks = src->blocks;
-}
-
->>>>>>> struct
 void	ft_lstswap(t_file *p1, t_file *p2)
 {
 	t_file	tmp;

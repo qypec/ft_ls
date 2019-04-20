@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 19:24:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 19:29:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*get_date(long int seconds)
 		tmp = ft_strjoin(parse2, tmp_year);
 		ft_strdel(&parse2);
 		ft_strdel(&tmp_year);
-		ft_strdel(&parse1) b               ;
+		ft_strdel(&parse1);
 		return (tmp);
 	}
 	else

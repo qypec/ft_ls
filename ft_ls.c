@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:46:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 19:25:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 19:29:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int				main(int argc, char **argv)
 	{
 		find_flags((const char **)argv, argc, &flags);
 		head = NULL;
-<<<<<<< HEAD
-		if (only_flags((const char **)argv) == 1)
-=======
 		if (only_flags((const char **)argv) == 1) /* Если в argv только флаги, то заполняем матрицу названиями файлов из директории */
->>>>>>> struct
 		{
 			if (flags.bigr == 1)
 				rec_penetration("./", &flags, 0);

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 20:29:13 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 19:25:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 19:28:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	content_cpy(t_file *src, t_file *tmp)
 	tmp->groupname = src->groupname;
 	tmp->numlink = src->numlink;
 	tmp->chmod = src->chmod;
-	tmp->totalsize = src->totalsize;
+	tmp->blocks = src->blocks;
 }
