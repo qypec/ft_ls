@@ -6,7 +6,7 @@
 /*   By: wconnell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/17 19:09:52 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 16:10:00 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,20 +117,28 @@ void	atime_bubble(t_file **head, int n)
 	}
 }
 
+int 	ft_lstlen(t_file *head, int n)
+{
+	t_file	*k;
+	k = head;
+	if (head == NULL)
+		return (n);
+	return (ft_lstlen(k->next,n + 1));
+}
+
 void	sort_list(t_file **head, t_flags *flags)
 {
+
+	printf("list size = %d\n", ft_lstlen(*head, 0));
 	if (*head != NULL)
 	{
+		flags->r == 1 ? ascii_bubble(head, 0) : ascii_bubble(head, 1);
 		if (flags->t == 1)
 		{
 			if (flags->u == 1)
 				flags->r == 1 ? atime_bubble(head, 0) : atime_bubble(head, 1);
 			else
 				flags->r == 1 ? time_bubble(head, 0) : time_bubble(head, 1);
-		}
-		else
-		{
-			flags->r == 1 ? ascii_bubble(head, 0) : ascii_bubble(head, 1);
 		}
 	}
 }

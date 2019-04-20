@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ft_ls"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libft\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/wconnell/x/ft_ls"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/wconnell/x/ft_ls"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/wconnell/x/ft_ls"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ft_ls">
+				<Option output="/Users/wconnell/x/ft_ls/ft_ls" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wconnell/x/ft_ls"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 ft_ls"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ft_ls/fast">
+				<Option output="/Users/wconnell/x/ft_ls/ft_ls" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wconnell/x/ft_ls"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 ft_ls/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libft">
+				<Option output="/Users/wconnell/x/ft_ls/libft/liblibft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wconnell/x/ft_ls/libft"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 libft"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libft/fast">
+				<Option output="/Users/wconnell/x/ft_ls/libft/liblibft.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wconnell/x/ft_ls/libft"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 libft/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/wconnell/x/ft_ls/libft/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/wconnell/x/ft_ls/Makefile">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/bust.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/flags.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/free_func.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/ft_ls.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/ft_ls.h">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/init.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/Makefile">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_abs.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_atoi.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_bzero.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_height.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isalnum.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isalpha.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isascii.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isdigit.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isprint.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_isspace.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_itoa.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstadd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstdel.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstdelone.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstiter.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstmap.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_lstnew.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_matrixfree.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memalloc.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memccpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memcmp.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memcpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memdel.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memmove.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_memset.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_numblen.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_pow.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putchar.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putchar_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putendl.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putendl_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_puterror.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putmatrix.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putnbr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putnbr_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putstr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_putstr_fd.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_realloc.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strcat.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strclr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strcmp.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strcpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strdel.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strdup.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strencut.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strequ.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_striter.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_striteri.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strjoin.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strlcat.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strlen.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strmap.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strmapi.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strncat.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strncmp.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strncpy.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strncut.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strnequ.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strnew.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strnstr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strrchr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strsplit.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strstr.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strsub.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strswap.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_strtrim.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_tolower.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_toupper.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/libft.h">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/print.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/push_back.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/rec_penetration.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/struct_filenames.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/struct_sort.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/whatsspecific.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libft\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
