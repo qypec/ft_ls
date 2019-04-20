@@ -36,7 +36,7 @@ void		init(t_file *head, char **argv, t_flags *flags)
 
 	head = struct_filenames(&head, (const char **)argv, "", flags);
 	sort_list(&head, flags);
-	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
+	print_without_dir(&head, flags);
 	tmp = head;
 	while (tmp != NULL)
 	{

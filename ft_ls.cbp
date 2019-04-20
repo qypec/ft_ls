@@ -121,6 +121,12 @@
 		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_abs.c">
 			<Option target="libft"/>
 		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_addsymb.c">
+			<Option target="libft"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_addsymbend.c">
+			<Option target="libft"/>
+		</Unit>
 		<Unit filename="/Users/wconnell/x/ft_ls/libft/ft_atoi.c">
 			<Option target="libft"/>
 		</Unit>
@@ -332,6 +338,12 @@
 			<Option target="libft"/>
 		</Unit>
 		<Unit filename="/Users/wconnell/x/ft_ls/print.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/print_l.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/wconnell/x/ft_ls/print_total.c">
 			<Option target="ft_ls"/>
 		</Unit>
 		<Unit filename="/Users/wconnell/x/ft_ls/push_back.c">

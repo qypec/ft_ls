@@ -60,7 +60,7 @@ int			putflag(const char *av, t_flags *flags)
 		while (av[i] != '\0')
 		{
 			av[i] == 'l' ? flags->l = 1 : 0;
-			av[i] == 'R' ? flags->R = 1 : 0;
+			av[i] == 'R' ? flags->bigr = 1 : 0;
 			av[i] == 'a' ? flags->a = 1 : 0;
 			av[i] == 't' ? flags->t = 1 : 0;
 			av[i] == 'r' ? flags->r = 1 : 0;

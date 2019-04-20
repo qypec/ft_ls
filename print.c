@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:39:42 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void		print_dir(char *path, t_flags *flags)
 
 void		print_path(const char *path)
 {
-	int i;
-	int	len;
-	
+	int		i;
+	int		len;
+
 	i = 0;
 	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
 		return ;
@@ -36,18 +36,16 @@ void		print_path(const char *path)
 	len = ft_strlen(path);
 	if (path[len - 1] == '/')
 	{
-		while (i != len - 1) /* убраем последнй слеш */
+		while (i != len - 1)
 		{
-			ft_putchar(path[i]);
-			i++;
+			ft_putchar(path[i++]);
 		}
 	}
 	else
 	{
 		while (path[i] != '\0')
 		{
-			ft_putchar(path[i]);
-			i++;
+			ft_putchar(path[i++]);
 		}
 	}
 	ft_putchar(':');
@@ -57,7 +55,6 @@ void		print_path(const char *path)
 void		print_struct(t_file **head, t_flags *flags, char *path)
 {
 	t_file	*tmp;
-	char	*no_leaks;
 
 	tmp = *head;
 	if (*head == NULL)
@@ -66,7 +63,7 @@ void		print_struct(t_file **head, t_flags *flags, char *path)
 		return ;
 	}
 	if (flags->l == 1)
-		print_l(head, path);
+		print_l(head, path, flags);
 	else
 	{
 		while (tmp != NULL)

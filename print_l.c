@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 15:44:23 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/19 20:49:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 18:41:58 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ t_file		*restruct_groupname(t_file **head)
 	while (*head != NULL)
 	{
 		if ((len = ft_strlen((*head)->groupname)) < maxlen)
-			(*head)->groupname = ft_addsymbend((*head)->groupname, ' ', maxlen - len);
+			(*head)->groupname = ft_addsymbend((*head)->groupname, \
+			' ', maxlen - len);
 		(*head) = (*head)->next;
 	}
 	*head = tmp;
@@ -79,8 +80,10 @@ t_file		*restruct_username(t_file **head)
 	tmp = *head;
 	while (*head != NULL)
 	{
-		if ((len = ft_strlen((*head)->username)) < maxlen)
-			(*head)->username = ft_addsymbend((*head)->username, ' ', maxlen - len);
+		if ((len = ft_strlen((*head)->username)) \
+		< maxlen)
+			(*head)->username = ft_addsymbend((*head)->username, \
+			' ', maxlen - len);
 		(*head) = (*head)->next;
 	}
 	*head = tmp;
@@ -112,7 +115,7 @@ t_file		*restruct_numlink(t_file **head)
 	return (*head);
 }
 
-void		print_l(t_file **head, char *path)
+void		print_l(t_file **head, char *path, t_flags *flags)
 {
 	t_file	*tmp;
 	char	*total;
@@ -131,8 +134,8 @@ void		print_l(t_file **head, char *path)
 		ft_putstr("  ");
 		ft_putstr(tmp->numlink);
 		ft_putstr(" ");
-		ft_putstr(tmp->username);
-		ft_putstr("  ");
+		flags->g == 1 ? 0 : ft_putstr(tmp->username);
+		flags->g == 1 ? 0 : ft_putstr("  ");
 		ft_putstr(tmp->groupname);
 		ft_putstr("  ");
 		ft_putstr(tmp->size);

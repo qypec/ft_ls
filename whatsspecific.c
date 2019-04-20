@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 20:31:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:51:04 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_date(long int seconds)
 
 	nowtime = time(NULL);
 	str = ctime(&seconds);
-	if (nowtime - seconds > 2592000 || nowtime - seconds < -3600) /* фича с выводом только года в некоторых случая ls -l */
+	if (nowtime - seconds > 2592000 || nowtime - seconds < -3600)
 	{
 		parse1 = ft_strncut(str, 4, "second");
 		tmp_year = ft_strencut(str, 5, "second");
@@ -82,14 +82,14 @@ char	*get_date(long int seconds)
 	}
 }
 
-int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что насчет очистки buff?
+int		whatsspecific(const char *str, t_file **new, t_flags *flags)
 {
 	struct stat		buff;
 	struct passwd	*pwd;
 	struct group	*grp;
 	char			*no_leaksstr;
 
-	if (lstat(str, &buff) < 0) // потом надо изменить на lstat
+	if (lstat(str, &buff) < 0)
 	{
 		bust(str);
 		return (0);
@@ -106,12 +106,13 @@ int		whatsspecific(const char *str, t_file **new, t_flags *flags) // что на
 	ft_strdel(&no_leaksstr);
 	(*new)->modif = buff.st_mtime;
 	(*new)->last_access = buff.st_atime;
-	(*new)->date = flags->u == 1 ? get_date((*new)->last_access) : get_date((*new)->modif);
+	(*new)->date = flags->u == 1 ? get_date((*new)->last_access) :\
+	get_date((*new)->modif);
 	grp = getgrgid(buff.st_gid);
 	(*new)->groupname = ft_strdup(grp->gr_name);
 	if (S_ISREG(buff.st_mode))
 		(*new)->type = T_FILE;
-    else if (S_ISDIR(buff.st_mode)) 
+    else if (S_ISDIR(buff.st_mode))
     	(*new)->type = T_DIR;
     else if (S_ISLNK(buff.st_mode))
     	(*new)->type = T_SYMBLINK;

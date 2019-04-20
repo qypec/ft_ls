@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 19:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:43:41 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_file		*get_rootnames(t_file **head, const char *path, t_flags *flags)
 	{
 		if (can_i_add_hidden_file(entry->d_name, flags) == 0)
 			continue ;
-		new = newlst(new, entry->d_name, path, flags); /* Никогда new != NULL, т.к. тут не может быть несуществующих файлов */
+		new = newlst(new, entry->d_name, path, flags);
 		push_back(&(*head), new);
 	}
 	closedir(dir);
@@ -46,7 +46,7 @@ char		*get_path(char *name, char *path)
 	return (tmp2);
 }
 
-void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рекурсия
+void		rec_penetration(const char *path, t_flags *flags, int path_flag)
 {
 	t_file		*head;
 	t_file		*tmp;
@@ -56,15 +56,16 @@ void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рек
 	if (path_flag != 1)
 		print_path(path);
 	path_flag = 0;
-	head = get_rootnames(&head, path, flags); // заполняет матрицу именами, которые вытаскиваются из пути
+	head = get_rootnames(&head, path, flags);
 	sort_list(&head, flags);
 	print_struct(&head, flags, (char *)path);
 	tmp = head;
 	while (tmp != NULL)
 	{
-		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") != 0 && ft_strcmp(tmp->name, ".") != 0) // если лист - папка 
+		if (tmp->type == T_DIR && ft_strcmp(tmp->name, "..") !=\
+		0 && ft_strcmp(tmp->name, ".") != 0)
 		{
-			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
+			new_path = get_path(tmp->name, tmp->path);
 			rec_penetration((const char *)new_path, flags, 0);
 			ft_strdel(&new_path);
 		}
@@ -74,7 +75,7 @@ void		rec_penetration(const char *path, t_flags *flags, int path_flag) // рек
 		structfree(&head);
 }
 
-void		rec_init(t_file *head, const char **argv, t_flags *flags) // функция, из которой мы вызываем рекурсию
+void		rec_init(t_file *head, const char **argv, t_flags *flags)
 {
 	t_file	*tmp;
 	char	*new_path;
@@ -83,13 +84,13 @@ void		rec_init(t_file *head, const char **argv, t_flags *flags) // функци�
 	path_flag = 0;
 	head = struct_filenames(&head, (const char **)argv, "", flags);
 	sort_list(&head, flags);
-	print_without_dir(&head, flags); /* функция печатает все файлы кроме директорий */
+	print_without_dir(&head, flags);
 	tmp = head;
 	while (tmp != NULL)
 	{
-		if (tmp->type == T_DIR) // если лист - папка 
+		if (tmp->type == T_DIR)
 		{
-			new_path = get_path(tmp->name, tmp->path); 	// когда заходим в рекурсию, меняется директория. Чтобы работал stat, соединяем путь и имя папки, в которую заходим ( ./ + libft + / = ./libft/ )
+			new_path = get_path(tmp->name, tmp->path);
 			path_flag = is_onlyone_arg(head);
 			rec_penetration((const char *)new_path, flags, path_flag);
 			ft_strdel(&new_path);

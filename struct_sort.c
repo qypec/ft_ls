@@ -6,27 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 17:20:11 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/20 16:31:57 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/20 18:46:04 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	content_cpy(t_file *src, t_file *tmp)
-{
-	tmp->name = src->name;
-	tmp->path = src->path;
-	tmp->type = src->type;
-	tmp->modif = src->modif;
-	tmp->last_access = src->last_access;
-	tmp->date = src->date;
-	tmp->username = src->username;
-	tmp->size = src->size;
-	tmp->groupname = src->groupname;
-	tmp->numlink = src->numlink;
-	tmp->chmod = src->chmod;
-	tmp->totalsize = src->totalsize;
-}
 
 void	ft_lstswap(t_file *p1, t_file *p2)
 {
@@ -117,19 +101,8 @@ void	atime_bubble(t_file **head, int n)
 	}
 }
 
-int 	ft_lstlen(t_file *head, int n)
-{
-	t_file	*k;
-	k = head;
-	if (head == NULL)
-		return (n);
-	return (ft_lstlen(k->next,n + 1));
-}
-
 void	sort_list(t_file **head, t_flags *flags)
 {
-
-	printf("list size = %d\n", ft_lstlen(*head, 0));
 	if (*head != NULL)
 	{
 		flags->r == 1 ? ascii_bubble(head, 0) : ascii_bubble(head, 1);
