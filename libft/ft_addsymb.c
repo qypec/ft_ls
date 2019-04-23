@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strswap.c                                       :+:      :+:    :+:   */
+/*   ft_addsymb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 19:57:50 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/21 13:58:33 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/18 17:06:02 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/21 13:55:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_strswap(char **matrix, int first, int second)
+char		*ft_addsymb(char *str, char c, int num)
 {
-	char	*tmp;
+	int		i;
+	int		j;
+	int		len;
+	char	*newstr;
 
-	tmp = ft_strdup(matrix[first]);
-	ft_strdel(&matrix[first]);
-	matrix[first] = ft_strdup(matrix[second]);
-	ft_strdel(&matrix[second]);
-	matrix[second] = ft_strdup(tmp);
-	ft_strdel(&tmp);
-	return (matrix);
+	i = 0;
+	j = 0;
+	if (num < 0)
+		return (NULL);
+	len = ft_strlen(str) + num;
+	newstr = (char *)ft_memalloc(len);
+	while (i < num)
+	{
+		newstr[i] = c;
+		i++;
+	}
+	while (str[j] != '\0')
+	{
+		newstr[i] = str[j];
+		j++;
+		i++;
+	}
+	newstr[i] = '\0';
+	ft_strdel(&str);
+	return (newstr);
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:42:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/11 20:28:47 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/21 14:52:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,77 @@
 
 void		print_dir(char *path, t_flags *flags)
 {
-	t_file	*head;
-	char	**matr;
-			
-	matr = get_rootnames(&matr, path, flags);
-	head = struct_filenames(&head, (const char **)matr, path, flags);
-	matr = matrix_sort(head, matr, flags);
-	ft_putmatrix(matr);
+	t_file *head;
+
+	head = NULL;
+	head = get_rootnames(&head, path, flags);
+	sort_list(&head, flags);
+	print_struct(&head, flags);
 	structfree(&head);
-	ft_matrixfree(&matr);
 }
 
 void		print_path(const char *path)
 {
-	int i;
-	int	len;
+	int		i;
+	int		len;
 
 	i = 0;
-	len = 0;
-	ft_putchar('\n');
+	if (path[0] == '.' && path[1] == '/' && path[2] == '\0')
+		return ;
 	if (path[0] == '.' && path[1] == '/')
 		i += 2;
 	len = ft_strlen(path);
 	if (path[len - 1] == '/')
 	{
-		while (i != len - 1) /* убраем последнй слеш */
+		while (i != len - 1)
 		{
-			ft_putchar(path[i]);
-			i++;
+			ft_putchar(path[i++]);
 		}
 	}
 	else
 	{
 		while (path[i] != '\0')
 		{
-			ft_putchar(path[i]);
-			i++;
+			ft_putchar(path[i++]);
 		}
 	}
 	ft_putchar(':');
 	ft_putchar('\n');
 }
 
-void		print_without_dir(t_file *head, const char **matr)
+void		print_struct(t_file **head, t_flags *flags)
 {
 	t_file	*tmp;
-	int		i;
 
-	i = 0;
-	tmp = head;
-	while (matr[i] != NULL)
+	tmp = *head;
+	if (*head == NULL)
 	{
-		if ((tmp = find_list(&head, matr[i])) == NULL) /* функция по имени из matrix находит нужный лист и возвращает указатель на него. Это сделано для того, чтобы не сортировать односвязный список */
-		{
-			i++;
-			// очистить tmp;
-			continue ;
-		}
-		if (tmp->type != T_DIR) // если лист - не директория 
-		{
-			ft_putendl(matr[i]);
-		}
-		// очистить tmp тут
-		i++;
+		ft_putchar('\n');
+		return ;
 	}
+	if (flags->l == 1)
+		print_l(head, flags);
+	else
+	{
+		while (tmp != NULL)
+		{
+			ft_putendl(tmp->name);
+			tmp = tmp->next;
+		}
+	}
+	ft_putchar('\n');
 }
 
-void		print(t_file *head, char **matr, t_flags *flags)
+void		print_without_dir(t_file **head)
 {
-	ft_putmatrix(matr); // пока так
+	t_file	*tmp;
+
+	tmp = *head;
+	while (tmp != NULL)
+	{
+		if (tmp->type != T_DIR)
+			ft_putendl(tmp->name);
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
 }

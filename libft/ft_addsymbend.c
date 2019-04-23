@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conclusion_without_flags.c                         :+:      :+:    :+:   */
+/*   ft_addsymbend.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 22:50:18 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/06 16:59:48 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/18 17:50:41 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/20 16:43:22 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "libft.h"
 
-void	conclusion_without_flags(char *dir_name)
+char		*ft_addsymbend(char *str, char c, int num)
 {
-	char			**matrix;
-	int				i;
+	int		i;
+	int		j;
+	int		len;
+	char	*newstr;
 
 	i = 0;
-	matrix = sort_by_ascii(dir_name);
-	while (matrix[i] != NULL)
+	j = 0;
+	if (num < 0)
+		return (NULL);
+	len = ft_strlen(str) + num;
+	newstr = (char *)ft_memalloc(len);
+	while (str[j] != '\0')
 	{
-		if (matrix[i][0] != '.')
-		{
-			ft_putstr(matrix[i]);
-			ft_putstr("\n");
-		}
+		newstr[i] = str[j];
+		j++;
 		i++;
 	}
-	matrix = ft_matrixfree(&matrix);
+	while (i < len)
+	{
+		newstr[i] = c;
+		i++;
+	}
+	newstr[i] = '\0';
+	ft_strdel(&str);
+	return (newstr);
 }

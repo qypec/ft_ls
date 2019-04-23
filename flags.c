@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:33:38 by wconnell          #+#    #+#             */
-/*   Updated: 2019/04/11 17:54:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/21 14:48:10 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int			is_it_flag(const char *s)
 {
-	if(s && s[0] == '-' && s[1])
-		return(1);
+	if (s && s[0] == '-' && s[1])
+		return (1);
 	else
-		return(0);
+		return (0);
 }
 
 int			valid_flag(const char *s, char *v)
 {
-	int i;
-	int j;
-	int f;
-	
+	int		i;
+	int		j;
+	int		f;
+
 	i = 1;
 	if (s[1] == '-' && !s[2])
 		return (2);
@@ -48,11 +48,11 @@ int			valid_flag(const char *s, char *v)
 
 int			putflag(const char *av, t_flags *flags)
 {
-	int i;
-	int f;
+	int		i;
+	int		f;
 
 	i = 1;
-	f = valid_flag(av, "lRatr");
+	f = valid_flag(av, "lRatrufg");
 	if (f == 2)
 		return (2);
 	if (f)
@@ -60,14 +60,24 @@ int			putflag(const char *av, t_flags *flags)
 		while (av[i] != '\0')
 		{
 			av[i] == 'l' ? flags->l = 1 : 0;
-			av[i] == 'R' ? flags->R = 1 : 0;
+			av[i] == 'R' ? flags->bigr = 1 : 0;
 			av[i] == 'a' ? flags->a = 1 : 0;
 			av[i] == 't' ? flags->t = 1 : 0;
 			av[i] == 'r' ? flags->r = 1 : 0;
+			av[i] == 'u' ? flags->u = 1 : 0;
+			av[i] == 'f' ? flags->f = 1 : 0;
+			av[i] == 'g' ? flags->g = 1 : 0;
 			i++;
 		}
 	}
 	return (1);
+}
+
+void		disable_flags(t_flags *flags)
+{
+	flags->a = 1;
+	flags->r = 0;
+	flags->t = 0;
 }
 
 int			find_flags(const char **av, int ac, t_flags *flags)
@@ -89,5 +99,7 @@ int			find_flags(const char **av, int ac, t_flags *flags)
 		m == 2 ? f++ : 0;
 		i++;
 	}
+	if (flags->f == 1)
+		disable_flags(flags);
 	return (1);
 }
